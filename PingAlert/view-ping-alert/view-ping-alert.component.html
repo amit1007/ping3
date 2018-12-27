@@ -1,0 +1,83 @@
+<br><br><br><br>
+<div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+                <div class="btn-group btn-breadcrumb ">
+                    <a routerLink="/home" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+                    <a class="btn btn-default">Admin</a>
+                    <a routerLink="/admin/alertHistory" class="btn btn-default">Alert Inbox</a>
+                    <a class="btn btn-default active">Alerts-View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<br><br>
+<div class="container">
+                <div class="panel panel-default">
+                                <div class="panel-heading"><strong>Alert Details</strong>
+                                </div>
+                                <div class="panel-body">
+                                        <form [formGroup]='formView' >
+                                                                <div class="form-group">    
+                                                                    <div class="row">               
+                                                                        <div class="col-lg-6">
+                                                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Alert Name</mat-label>
+                                                                                        <input matInput placeholder="Alert Name" formControlName="alertname" readonly >
+                                                                                </mat-form-field>
+                                                                        </div>
+                                                                        
+                                                                        <div class="col-lg-6">
+                                                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Application Name</mat-label>
+                                                                                        <input matInput placeholder="Application Name" formControlName="AppicationName" readonly >
+                                                                                </mat-form-field>
+                                                                        </div>
+                                                                    </div>  
+                                                                    <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Measures</mat-label>
+                                                                                            <input matInput placeholder="Measures" formControlName="Measures" readonly >
+                                                                                    </mat-form-field>    
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Previous Value</mat-label>
+                                                                                            <input matInput placeholdr="Previous Value" formControlName="PreviousValue" readonly >
+                                                                                    </mat-form-field>
+                                                                            </div>
+                                                                    </div>  
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Current Value</mat-label>
+                                                                                        <input matInput placeholder="Current Value" formControlName="CurrentValue" readonly >
+                                                                                </mat-form-field>    
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Trigger Date</mat-label>
+                                                                                        <input matInput placeholder="Triggered Date" formControlName="triggeredDate" readonly > 
+                                                                                </mat-form-field>
+                                                                        </div>
+                                                                    </div>                                        
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                                                                <mat-label class="text-ping">Triggered Time</mat-label>
+                                                                                        <input matInput  placeholder="Triggered Time" formControlName="triggeredTime" readonly >
+                                                                                </mat-form-field>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                        </form>
+                                </div>
+                </div>
+
+    <!-- <mat-card>
+    
+    <br><br>
+    </mat-card> -->
+</div>

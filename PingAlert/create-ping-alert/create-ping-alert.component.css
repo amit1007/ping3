@@ -1,0 +1,170 @@
+
+#alertID {
+    visibility: hidden;
+  }
+  
+  #btn-default{
+    background-color: rgb(249, 25, 66);
+    color: white;
+    padding-left: -20px;
+    padding-right: -20px;
+  }
+  
+  #navbar-fixed-top{
+    margin-top: 4.5%;
+  }
+  
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background-color: rgb(231, 76, 60);
+  }
+  .mat-toolbar{
+    background-color: rgb(231, 76, 60);
+    color: white;
+    font-size: 18px;
+    padding-bottom: -50px;
+  }
+  p{
+    margin-left:43%;
+  }
+  
+  /* .mat-tab-group.mat-primary .mat-ink-bar{
+  
+  } */
+  
+  mat-ink-bar.mat-ink-bar{
+    background-color: rgb(231, 76, 60);
+  }
+  
+  .example-full-width {
+      width: 100%;
+    }
+    .App_Dia_Mea-full-width {
+      width: 50%;
+    }
+    #days{
+      font-size: 14px;
+      color: grey; 
+      margin-left:30px;
+    }
+  
+    #daily{
+      margin-top: -15px;
+    }
+    
+    mat-checkbox{
+      margin-left: 20px;
+    }
+    #menu{
+        margin-left:-20%;
+    }
+    #function{
+      margin-top: -5px;
+    }
+  
+  
+  #widthManage{
+    width: 150%;
+  }
+  
+  hr{
+      border: 1px solid lightgray ;
+  }
+  h1 {
+      color: gray;
+      font-size: 2vw;
+  }
+  
+  h2 {
+    
+      color: black;
+      font-size: 20px;
+  }
+  
+  .example-margin {
+      margin: 0 10px;
+  
+    }
+  
+    .frmCntCurrentValue{
+    
+      color: skyblue;
+      font-size: 20px;
+    }
+  
+  .example-section {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      height: 60px;
+    }
+  
+   *{
+     font-family: 'Nunito';
+   }
+  
+   #next_back{
+     background-color: rgb(249, 25, 66);
+   }
+  
+   table {
+    width: 100%;
+    transition: none !important;
+    box-shadow: none !important;
+    margin-top: -30px;
+  }
+  
+  /* .mat-form-field {
+    font-size: 14px;
+    width: 70%;
+  } */
+  
+  /* #row2{
+  
+    padding-top: 8px;
+    padding-bottom: 10px;
+  } */
+  /* mat-slide-toggle {
+    margin-left: 10px;
+  } */
+  .table-responsive{
+    margin-top: -15px;
+    padding-top: 40px;
+  }
+  tr.mat-header-row{
+    height: 37px;
+  }
+  .table-bordered>thead>tr>th{
+    border: 1px solid rgb(231, 76, 60);
+  }
+  
+  td{
+    color: rgb(127, 127, 127)
+  }
+  
+  .mat-header-cell {
+    color: rgb(102,102,102);
+  }
+  
+  th{
+    padding-top: -100px;
+    font-size: 14px;
+    background-color: rgb(238, 238, 238);
+  }
+  
+  #th_allign{
+    text-align: center;
+  }
+   
+  *{
+    font-family: 'Nunito', 'Glyphicons Halflings'
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:gainsboro;
+    color: black;
+    text-align: center;
+}

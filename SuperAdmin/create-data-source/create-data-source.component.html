@@ -1,0 +1,186 @@
+<div class="image">
+    <nav class="navbar navbar-default navbar-fixed-top">
+  
+        <a href="#" class="navbar-brand"></a>
+        <a id="img" routerLink="/signin" class="navbar-brand"><img src="../../../assets/imgs/48x48.png"></a>
+        <!-- <a id="img" routerLink="/signin" class="navbar-brand"><b>Ping</b></a> -->
+        <div class="container">
+            <div class="navbar-header">
+                <button (click)="toggleCollapse()" id="nav-button" type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#example">
+                    <span class="sr-only">Ping Alerting System</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+  
+            <!-- <div class="collapse navbar-collapse" [class.show]="show" id="example">
+                <ul class="nav navbar-nav">
+                </ul>
+                <div id="myDiv">
+                    
+                </div>
+            </div> -->
+        </div>
+        <!-- <ul class="nav navbar-nav navbar-right">
+  
+        </ul> -->
+  
+  
+  
+    </nav>
+  
+  </div>
+<br><br><br><br><br>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-1">
+      <p class="pingText">Please enter the details of the DataSource for Ping:</p>
+  </div>
+</div>
+  <div class="container" id="container"><br>
+ <div class="row">
+        <form  id="form_width" [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)" >
+                <div class="form-group ">
+                        <div class="col-md-6">
+            
+                
+                    <div class="row">
+                        <div class="col-md-9 col-lg-offset-1">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput placeholder="Source Name" formControlName="sourcename">
+                        </mat-form-field>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-9 col-lg-offset-1">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-select  placeholder="Source Type" formControlName = "type">
+                                <mat-option *ngFor='let type of food' [value]="type.value">
+                                    {{type.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        
+                        </div>
+                    </div> 
+                    <br>
+                    <div class="row">
+                        <div class="col-md-9 col-lg-offset-1">
+                                <!-- <input  class="form-control" formControlName="hostname">  -->
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <input matInput placeholder="Host Name" formControlName="hostname">
+                                </mat-form-field>
+                                <p id="google">eg. qlikserver.domain.com </p>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-9 col-lg-offset-1">
+                        <mat-form-field>
+                        <input matInput placeholder="Connect as Username" formControlName="connect">
+                        </mat-form-field>
+                        </div>
+                        </div>
+                        
+                    <br>
+                    
+                
+            
+                        </div>
+                        <div class="col-md-6" >
+                            <div *ngIf="UploadCertificateFlag">
+                                    <div class="row">
+                                            <div class="col-md-3">
+                                            <label>Certificates</label><br>
+                                            </div>
+                                        </div>
+                                            <label matTooltip="Upload .pfx or .pem" for="file-upload" class="custom-file-upload">
+                                                <i class="glyphicon glyphicon-upload"></i> Upload File
+                                            </label>
+                                            <input  id="file-upload" type="file" 
+                                            class="upload" 
+                                            ng2FileSelect
+                                            accept="*.csv" 
+                                            />
+                                        <br>
+                                        <table class="table" >
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Size</th>
+                                                <th>Progress</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of uploader.queue">
+                                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                                <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                                <td *ngIf="uploader.isHTML5">
+                                                    <div class="progress" style="margin-bottom: 0;">
+                                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                    <!-- <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span> -->
+                                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap>
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                            (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    
+                                                    <!-- <button type="button" class="btn btn-warning btn-xs"
+                                                            (click)="item.cancel()" [disabled]="!item.isUploading">
+                                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                                    </button> -->
+                                                    <button type="button" class="btn btn-danger btn-xs"
+                                                            (click)="item.remove()">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                            </div>
+                            <!-- <div class="form-group"> -->
+                                    <div class="row">
+                                    <div class="col-md-9">
+                                    <mat-form-field appearance="fill">
+                                    <input matInput placeholder="Directory" formControlName="userdirectory">
+                                    </mat-form-field>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                        <mat-form-field appearance="fill">
+                                        <input matInput placeholder="Certificate Password" formControlName="certPassword">
+                                        </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-9">
+                                            <mat-form-field appearance="fill">
+                                            <input matInput placeholder="MonogoDB Port" formControlName="mongoDbPort">
+                                            </mat-form-field>
+                                            </div>
+                                    </div>
+                            <!-- </div> -->
+                            
+                                    
+                        </div>
+                        <div class="row">
+                                <div class="col-md-2">
+                                    <button  type="submit"
+                                    id="btn-default"     
+                                    mat-raised-button>Test Connection</button> 
+                                </div>
+                        </div>
+                </div>
+        </form>
+     </div>
+</div>

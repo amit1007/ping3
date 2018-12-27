@@ -1,0 +1,92 @@
+
+button {
+    background-color: rgb(249,25,66);
+    color: white;
+  }
+  
+  .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #f8f8f8;
+  }
+  
+  .navbar-default{
+    background-color:  rgb(249,25,66);
+    border-color:lightgray;
+    padding-bottom: 20px;
+  }
+  
+  #shift{
+    margin-left: 1.5%;
+  }
+
+  #inbox {
+    margin-left: 50px;
+  }
+  
+  #admin{
+    margin-left: 50px;
+  }
+  
+  #Menu{
+    color:white;
+    margin-top: 10px;
+  }
+  
+  #Menu:hover{
+    background-color: rgb(250, 57, 93);
+    color: white;
+    transition: 0.6s;
+  /*   
+    -webkit-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03); */
+  }
+  
+  .navbar-default{
+    background-color:  rgb(249,25,66);
+    border-color:lightgray;
+    padding-bottom: 10px;
+  }
+  
+  #img{
+    margin-top: -5px;
+  }
+  
+  #user_pre_img{
+    margin-left: -50px;
+  }
+  
+  .image{
+    margin-top: 5px;
+  }
+  
+  a{
+    margin-top: 10px;
+  }
+  
+  .nav .open>a, .nav .open>a:focus, .nav .open>a:hover
+  .navbar-brand{
+    color: rgb(250, 57, 93);
+    background-color: rgb(249,25,66); 
+    transition: 0.9s;
+  }
+  
+  #right_navbar_items{
+    margin-top: 25px;
+    margin-left: -20px;
+  }
+  .navbar-right{
+    margin-left: -100px;
+  }
+  
+  
+   .active{
+     color: white !important;
+     background-color: rgb(250, 57, 93) !important;
+   }
+  .active:hover{
+    transition: 0.9s;    
+  }
+  .show-toggle{
+    display: block !important;
+  }
+  

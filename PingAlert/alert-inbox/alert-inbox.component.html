@@ -1,0 +1,158 @@
+<br><br><br><br>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-3" id="height">
+          <flash-messages></flash-messages>
+      </div>
+    </div>
+</div>
+<div>
+      
+  <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+          <div class="col-md-4 ">
+            <div class="input-group">
+              <!-- <input type="text" class="form-control" placeholder="Search" id="txtSearch"/> -->
+              <input class="form-control" (keyup)="applyFilter($event.target.value)" placeholder="Search" >
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                          <span class="glyphicon glyphicon-search"></span>
+                      </button>
+                  </div>
+              </div>
+           
+    </div>
+      </div>
+    </div>
+<!-- <div class="row">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-4">
+
+  </div>
+</div> -->
+<br>
+<div class="container" id="table-responsive">
+  <div class="table-responsive" >
+      <table mat-table [dataSource]="dataSource" class=" mat-elevation-z8 table-bordered table-striped">
+
+          <!-- frmCntAlertID Column -->
+          <ng-container matColumnDef="AlertID">
+          <th  mat-header-cell *matHeaderCellDef  >Alert Id</th>
+          <td  mat-cell *matCellDef="let element">&nbsp; {{element.frmCntAlertID}} </td>
+          </ng-container>
+
+          <!-- frmCntAlertName Column -->
+          <ng-container matColumnDef="AlertName" >
+            <th mat-header-cell  *matHeaderCellDef id="th_allign" > Alert Name </th>
+           <td  mat-cell *matCellDef="let element">&nbsp; {{element.frmCntAlertName}} </td>
+          </ng-container>
+
+         
+          <!-- frmCntApplication Column -->
+          <ng-container matColumnDef="ApplicationName" >
+            <th mat-header-cell  *matHeaderCellDef  id="th_allign" > Application Name </th>
+            <td  mat-cell *matCellDef="let element"> &nbsp; {{element.frmCntApplication.AppName }} </td>
+          </ng-container>
+<!-- frmCntMeasures -->
+          <ng-container matColumnDef="Measures" >
+            <th mat-header-cell  *matHeaderCellDef id="th_allign"  >Measures  </th>
+            <td  mat-cell *matCellDef="let element">&nbsp; {{element.frmCntMeasures.pingMeasuresqLabel }} </td>
+          </ng-container>
+
+           <!-- alertsetTime Column -->
+           <ng-container matColumnDef="Setdate" >
+              <th mat-header-cell  *matHeaderCellDef id="th_allign" >Set Date </th>
+              <td class="text-center" mat-cell *matCellDef="let element">&nbsp;  {{element.alertsetTime | date:"yyyy-MM-dd"}} </td>
+            </ng-container>
+  
+  
+               <!-- alertsetTime Column -->
+           <ng-container matColumnDef="SetTime">
+              <th mat-header-cell  *matHeaderCellDef id="th_allign"  > Set Time </th>
+               <td class="text-center" mat-cell *matCellDef="let element"> &nbsp;{{element.alertsetTime | date:"shortTime"}} </td>
+            </ng-container>    
+  
+
+
+<!-- Trigger -->
+
+          <ng-container matColumnDef="trigger">
+            <th mat-header-cell *matHeaderCellDef id="th_allign"  >Trigger  </th>
+           <!-- <td mat-cell *matCellDef="let element"> {{element.trigger}} </td> -->
+           <td class="text-center" mat-cell *matCellDef="let element" class="text-center">
+                <mat-slide-toggle 
+                      class="example-margin"
+                      (change)="onTriggerChange($event,element._id)"
+                      [color]="color"
+                      [checked]="checked"
+                      [disabled]="disabled"
+                      [(ngModel)]="element.trigger"> 
+                </mat-slide-toggle>
+            </td>
+          </ng-container>
+
+          <!-- Colum Edit/ Delete -->
+          <ng-container matColumnDef="edit">
+              <th mat-header-cell *matHeaderCellDef id="th_allign" >Edit / Delete  </th>
+             <td mat-cell *matCellDef="let element">
+               <div class="row col-md-offset-3"  >
+                  &nbsp; &nbsp;
+                 <div class="col-md-2">
+                     <a style="cursor: pointer;" [routerLink]="['/pingAlert/editAlert/',element._id]" ><i matTooltip="Edit" class="glyphicon glyphicon-pencil" ></i></a>
+                 </div>
+                 &nbsp;
+                 <div class="col-md-2">
+                      <a  matTooltip="Delete" style="cursor: pointer;" (click)="deleteAlert(element._id)"> <i class="glyphicon glyphicon-trash"></i></a>
+                     <!-- <a mat-raised-button color="warn" (click)="deleteAlert(element._id)"><mat-icon>delete</mat-icon></a> -->
+                  </div>
+               </div>
+             </td>
+           </ng-container>
+
+          <!-- <ng-container matColumnDef="Edit/Delete">
+              <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;<strong>Edit / Delete</strong>  </th>
+
+             <td>
+               <div class="row">
+                 <div class="col-md-2">
+                  <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                 </div>
+                 <div class="col-md-2">
+                    <button class="btn btn-primary"> <i class="glyphicon glyphicon-trash"></i></button>
+                  </div>
+               </div>
+             </td>
+
+          </ng-container> -->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+        <a id="button" mat-raised-button [routerLink]="['/pingAlert/createAlert']">Create Alert</a>
+    </div>
+    <div class="col-md-9">
+        <mat-paginator [pageSizeOptions]="[10,20,50,100,150,200,250]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="col-lg-3">Welcome SuperAdmin</div>
+    <div class="col-lg-3">© Roxai All Rights Reserved</div>
+    <div class="col-lg-5 pull-right">Your Trial Period For This App Has Expired Within<strong class="alert-danger"> 3 Days</strong></div>
+  </div>
+  <!-- <p>Footer</p> -->
+</div>
+
+
+
+

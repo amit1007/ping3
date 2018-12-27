@@ -1,0 +1,77 @@
+
+<div class="image">
+  <nav class="navbar navbar-default navbar-fixed-top">
+
+      <a href="#" class="navbar-brand"></a>
+      <a id="img" routerLink="/signin" class="navbar-brand"><img src="../../../assets/imgs/48x48.png"></a>
+      <!-- <a id="img" routerLink="/signin" class="navbar-brand"><b>Ping</b></a> -->
+      <div class="container">
+          <div class="navbar-header">
+              <button (click)="toggleCollapse()" id="nav-button" type="button" class="navbar-toggle collapsed"
+                  data-toggle="collapse" data-target="#example">
+                  <span class="sr-only">Ping Alerting System</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+
+          <div class="collapse navbar-collapse" [class.show]="show" id="example">
+              <ul class="nav navbar-nav">
+              </ul>
+              <div id="myDiv">
+                  
+              </div>
+          </div>
+      </div>
+      <!-- <ul class="nav navbar-nav navbar-right">
+
+      </ul> -->
+
+
+
+  </nav>
+
+</div>
+<br><br><br><br>
+<div class="col-md-4"></div>
+          <div class="col-md-3 "id="shift">
+          <mat-card>   
+            <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit(loginForm.value)" autocomplete="off">
+                   
+                  <p>Please login to continue</p>          
+                    <mat-form-field  >
+                        <mat-label>User Name </mat-label>
+
+                        <input  matInput placeholder="Enter User ID" formControlName="PingUserName"
+                               [errorStateMatcher]='matcher'>
+                               
+                               
+                               <mat-icon  matSuffix class="material-icons" >perm_identity</mat-icon>
+                               
+                        <mat-error>
+                          <span *ngIf="!loginForm.get('PingUserName').valid && loginForm.get('PingUserName').touched">Please enter User ID</span>
+                        </mat-error>
+                      </mat-form-field>
+                  <mat-form-field >
+                      <mat-label>Password </mat-label>
+                      <input  matInput type="password" placeholder="Enter User ID" formControlName="password"
+                             [errorStateMatcher]='matcher'>
+
+                             <mat-icon  matSuffix>vpn_key</mat-icon>
+                             
+                      <mat-error>
+                        <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Please enter Password</span>
+                      </mat-error>
+                    </mat-form-field>
+      
+                      <br><br>  
+                  <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" [disabled]="!loginForm.valid" mat-raised-button >Login</button>
+                    </div>
+                  </div>            
+                   <!-- </div> -->        
+          </form>
+        </mat-card>  
+        </div>

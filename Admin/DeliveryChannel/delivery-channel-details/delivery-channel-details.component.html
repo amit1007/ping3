@@ -1,0 +1,302 @@
+<br><br><br><br>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+            <div class="btn-group btn-breadcrumb ">
+                <a routerLink="/pingAlert/alertInbox" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+                <a class="btn btn-default">Admin</a>
+                <a routerLink="/admin/deliveryChannelDetails" class="btn btn-default">Delivery Channel Details</a>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="editPingUser" (ngSubmit)="onFormSubmit(QlikServer.value)">
+        <div class="row">
+      
+            <div class="col-md-5">
+                <!-- <input type="text" class="form-control"> -->
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Channel Type *</mat-label>
+                <mat-select placeholder="Device Name" formControlName="DeviceName" (selectionChange)="ChannelTypeChanged($event.value)" name="DeviceName" required>
+                    <mat-option>--  Select Device Name --</mat-option>
+                  <mat-option *ngFor="let chName of ChannelType" [value]="chName.CahnnelTypeName">
+                    {{chName.CahnnelTypeName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>
+                    <span *ngIf="!editPingUser.get('DeviceName').valid && editPingUser.get('DeviceName').touched">Please select user access</span>
+                  </mat-error>
+                <!-- <mat-icon class="text-ping" matSuffix>how_to_reg</mat-icon> -->
+                <!-- [selected]="car.color.id == qlikSenseApps.Appid" -->
+              </mat-form-field>
+              </div>
+            <!-- <div class="col-md-1"></div> -->      
+            <div class="input-group col-md-4" style="float:right">
+              <!-- <input type="text" class="form-control" placeholder="Search" id="txtSearch"/> -->
+              <input class="form-control" (keyup)="applyFilter($event.target.value)" placeholder="Search" >
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                          <span class="glyphicon glyphicon-search"></span>
+                      </button>
+                  </div>
+              </div>
+        </div>
+     
+      </form>
+     </div>
+    </div>
+</div>
+<ng-container *ngIf="ShowEmailDetails">
+    <div class="container" id="table-responsive">
+      <h3>Show Email Details</h3>
+        <div class="table-responsive" >
+            <table name="EmailDetails" mat-table [dataSource]="dataSource" matSort class=" mat-elevation-z8 table-bordered table-striped">
+
+              <!-- USerID Column -->
+              <ng-container matColumnDef="DeliveryChannelID">
+              <th  mat-header-cell *matHeaderCellDef style="margin-left: 100px;">Delivery Channel ID</th>
+              <td mat-cell *matCellDef="let element"> {{element.DeliveryChannelID}} </td>
+              </ng-container>
+
+              <!-- USerNAme Column -->
+              <ng-container matColumnDef="DeliveryChannelName">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Channel Name </th>
+              <td mat-cell  *matCellDef="let element">  &nbsp; {{element.DeliveryChannelName}} </td>
+              </ng-container>
+
+              <!-- Directory Column -->
+              <ng-container matColumnDef="DeliveryChannelType">
+                <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Channel Type </th>
+                <td mat-cell  *matCellDef="let element">  &nbsp; {{element.DeliveryChannelType}} </td>
+                </ng-container>
+
+                  <!-- Access Column -->
+              <ng-container matColumnDef="Address">
+                <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Address </th>
+                <td mat-cell  *matCellDef="let element">  &nbsp; {{element.Address}} </td>
+                </ng-container>
+
+                  <!-- Role Column -->
+              <ng-container matColumnDef="PortNo">
+                <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Port No </th>
+                <td mat-cell  *matCellDef="let element">  &nbsp; {{element.PortNo}} </td>
+                </ng-container>
+
+                  <!-- EmailId Column -->
+              <ng-container matColumnDef="SecurityLayerID">
+                <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Security Layer</th>
+                <td mat-cell  *matCellDef="let element">  &nbsp; {{element.SecurityLayerID}} </td>
+                </ng-container>
+
+                   <!-- Email User Column -->
+              <ng-container matColumnDef="EmailUserName">
+                <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;User Email</th>
+                <td mat-cell  *matCellDef="let element">  &nbsp; {{element.EmailUserName}} </td>
+                </ng-container>
+
+                   <!-- Default User Email Column -->
+                   <ng-container matColumnDef="DefaultSenderEmail">
+                    <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Default User Email</th>
+                    <td mat-cell  *matCellDef="let element">  &nbsp; {{element.DefaultSenderEmail}} </td>
+                    </ng-container>
+  
+
+              <!-- alertsetTime Column -->
+              <!-- <ng-container matColumnDef="Setdate">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp; Set date </th>
+              <td mat-cell  *matCellDef="let element">  &nbsp;{{element.alertsetTime | date}} </td>
+              </ng-container> -->
+
+
+                 <!-- alertsetTime Column -->
+             <!-- <ng-container matColumnDef="SetTime">
+                <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp; Set Time </th>
+                <td mat-cell name="SetTime" *matCellDef="let element">  &nbsp;{{element.alertsetTime | date:"HH:MM"}} </td>
+              </ng-container> -->
+
+    <!-- Trigger -->
+
+              <!-- <ng-container matColumnDef="trigger">
+                <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;Trigger  </th> -->
+               <!-- <td mat-cell *matCellDef="let element"> {{element.trigger}} </td> -->
+               <!-- <td mat-cell *matCellDef="let element">
+                    <mat-slide-toggle
+                          class="example-margin"
+                          name="trigger"
+                          [color]="color"
+                          [checked]="checked"
+                          [disabled]="disabled"
+                          [(ngModel)]="element.trigger"> {{element.trigger}}
+                    </mat-slide-toggle>
+                 </td>
+              </ng-container> -->
+
+              <!-- Colum Edit/ Delete -->
+              <ng-container matColumnDef="edit">
+                  <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;Edit / Delete  </th>
+
+                 <td mat-cell *matCellDef="let element">
+                   <div class="row col-md-offset-3">
+                     <div class="col-md-2">
+                        <!-- <a routerLink="/edit_alert" style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a> -->
+                        <!-- <a type='submit' [routerLink]="['/edit_new',element.id]" (click)="onEdit(element._id)" style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a> -->
+                        <a type='submit' [routerLink]="['/admin/editDeliveryChannel/',element._id]"  style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a>
+
+                      </div>
+                     &nbsp;
+                     <div class="col-md-2">
+                          <a style="cursor: pointer;" (click)="deleteUser(element._id)"><i class="glyphicon glyphicon-trash"></i></a>
+                         <!-- <a mat-raised-button color="warn" (click)="deleteAlert(element._id)"><mat-icon>delete</mat-icon></a> -->
+                      </div>
+                   </div>
+                 </td>
+               </ng-container>
+              <!-- <ng-container matColumnDef="Edit/Delete">
+                  <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;<strong>Edit / Delete</strong>  </th>
+                 <td>
+                   <div class="row">
+                     <div class="col-md-2">
+                      <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                     </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-primary"> <i class="glyphicon glyphicon-trash"></i></button>
+                      </div>
+                   </div>
+                 </td>
+
+              </ng-container> -->
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+
+
+      <br>
+      <div class="row">
+        <div class="col-md-3">
+            <!-- <a class="btn btn-danger" [routerLink]="['/TestDelivery']">Create User</a> -->
+            <button mat-raised-button id="btn" [routerLink]="['/admin/createDeliveryChannel']">Create Channel</button>
+        </div>
+        <div class="col-md-9">
+          <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+      </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="ShowMobileApp">
+    <div class="container" id="table-responsive">
+      <h3>Show Mobile App Details</h3>
+      <div class="table-responsive" >
+          <table name="MobileDetails" mat-table [dataSource]="dataSource2" matSort class=" mat-elevation-z8 table-bordered table-striped">
+
+            <!-- USerID Column -->
+            <ng-container matColumnDef="DeliveryChannelID">
+            <th  mat-header-cell *matHeaderCellDef style="margin-left: 100px;">Delivery Channel ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.DeliveryChannelID}} </td>
+            </ng-container>
+
+            <!-- USerNAme Column -->
+            <ng-container matColumnDef="DeliveryChannelName">
+            <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Channel Name </th>
+            <td mat-cell  *matCellDef="let element">  &nbsp; {{element.DeliveryChannelName}} </td>
+            </ng-container>
+
+            <!-- Directory Column -->
+            <ng-container matColumnDef="DeliveryChannelType">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Channel Type </th>
+              <td mat-cell  *matCellDef="let element">  &nbsp; {{element.DeliveryChannelType}} </td>
+              </ng-container>
+
+                <!-- APIKey Column -->
+            <ng-container matColumnDef="APIKey">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;API Key </th>
+              <td mat-cell  *matCellDef="let element">  &nbsp; {{element.APIKey}} </td>
+              </ng-container>
+
+                <!-- Role Column -->
+            <!-- <ng-container matColumnDef="PortNo">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Port No </th>
+              <td mat-cell  *matCellDef="let element">  &nbsp; {{element.PortNo}} </td>
+              </ng-container> -->
+
+                <!-- SenderKey Column -->
+            <ng-container matColumnDef="SenderKey">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Sender Key</th>
+              <td mat-cell  *matCellDef="let element">  &nbsp; {{element.SenderKey}} </td>
+              </ng-container>
+
+                 <!-- Server Column -->
+            <ng-container matColumnDef="Server">
+              <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Server</th>
+              <td mat-cell  *matCellDef="let element">  &nbsp; {{element.Server}} </td>
+              </ng-container>
+
+                 <!-- DeviceName Column -->
+                 <ng-container matColumnDef="DeviceName">
+                  <th mat-header-cell  *matHeaderCellDef>&nbsp;&nbsp;Device Name</th>
+                  <td mat-cell  *matCellDef="let element">  &nbsp; {{element.DeviceName}} </td>
+                  </ng-container>
+
+            <!-- Colum Edit/ Delete -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;Edit / Delete  </th>
+
+               <td mat-cell *matCellDef="let element">
+                 <div class="row">
+                   <div class="col-md-2">
+                      <!-- <a routerLink="/edit_alert" style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a> -->
+                      <!-- <a type='submit' [routerLink]="['/edit_new',element.id]" (click)="onEdit(element._id)" style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a> -->
+                      <a type='submit' [routerLink]="['/admin/editDeliveryChannel/',element._id]"  style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a>
+
+                    </div>
+                   &nbsp;
+                   <div class="col-md-2">
+                        <a style="cursor: pointer;" (click)="deleteUser(element._id)"><i class="glyphicon glyphicon-trash"></i></a>
+                       <!-- <a mat-raised-button color="warn" (click)="deleteAlert(element._id)"><mat-icon>delete</mat-icon></a> -->
+                    </div>
+                 </div>
+               </td>
+             </ng-container>
+            <!-- <ng-container matColumnDef="Edit/Delete">
+                <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;<strong>Edit / Delete</strong>  </th>
+               <td>
+                 <div class="row">
+                   <div class="col-md-2">
+                    <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                   </div>
+                   <div class="col-md-2">
+                      <button class="btn btn-primary"> <i class="glyphicon glyphicon-trash"></i></button>
+                    </div>
+                 </div>
+               </td>
+
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+          </table>
+
+      </div>
+
+
+      <br>
+      <div class="row">
+        <div class="col-md-3">
+            <!-- <a class="btn btn-danger" [routerLink]="['/TestDelivery']">Create User</a> -->
+            <a class="btn btn-danger" [routerLink]="['/admin/createDeliveryChannel']">Create Channel</a>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-5">
+          <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+      </div>
+    </div>
+</ng-container>
+
+   

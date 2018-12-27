@@ -1,0 +1,34 @@
+
+<div class="row headerMargin">
+    <form [formGroup]="frmLicense" (ngSubmit)="renewKey()">
+      <div class="col-lg-5 col-lg-offset-4">
+        <mat-card>
+          <div class="row" >
+            <div class="col-lg-2">
+              <img src="../../../../assets/imgs/48x48.png" height="100" width="100">
+            </div>
+            <div class="col-lg-8 pull-left PaddingHeader">
+              <h4>PING Alerting System</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-offset-2">
+              <h4>Your trial period has expired!</h4>
+              <p><a>Please Buy A license</a></p>
+            </div>
+          </div>
+          <div class="row PaddingTop">
+            <div class="col-lg-offset-2">
+              <h4>Any question</h4>
+              <p><a>Contact Us</a></p>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-offset-2">
+                <input type="button" (click)="renewKey()" class="btn btn-success" value="Renew License"/>
+              </div>
+            </div>
+        </mat-card>
+      </div>
+    </form>
+</div>

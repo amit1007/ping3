@@ -1,0 +1,44 @@
+<h1>User Preferences</h1>
+<hr>
+<form [formGroup]="TimezoneServer" (ngSubmit)="onFormSubmit(TimezoneServer.value)">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <div class="row">
+            <mat-form-field>
+              <mat-select placeholder="Location/Timezone"  name="food">
+                <mat-option *ngFor="let timezone of timezones" (click)="getTimezoneId(timezone.id, timezone.name)" [value]="timezone.name">
+                  {{timezone.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+           </div>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <div class="row">
+            <mat-form-field>
+              <mat-select placeholder="Preferred Channel"  name="place">
+                      <mat-option *ngFor="let place of places" (click)="getPlace(place.viewValue)" [value]="place.value">
+                      {{place.viewValue}}
+                      </mat-option>
+              </mat-select>
+              </mat-form-field>
+           </div>
+    </div>
+  </div>
+  
+    
+    
+   <div class="row"> 
+    <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="row">
+              <button mat-raised-button color="warn">Save</button>&nbsp;&nbsp;&nbsp;
+              <button type="button" (click)="onNoClick()" mat-raised-button>Cancel</button>
+          </div>
+        </div>
+      </div>
+  </form>

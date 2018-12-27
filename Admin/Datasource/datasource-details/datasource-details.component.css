@@ -1,0 +1,65 @@
+/*  REal*/
+
+table {
+    width: 100%;
+    transition: none !important;
+    box-shadow: none !important;
+    margin-top: -30px;
+  } 
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 70%;
+  }
+  
+  #row2{
+    
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+  
+  .table-responsive{
+    margin-top: -15px;
+    padding-top: 40px;
+  }
+  tr.mat-header-row{
+    height: 37px;
+  }
+  .table-bordered>thead>tr>th{
+    border: 1px solid  rgb(249, 25, 66);
+  } 
+  
+  td{
+    color: rgb(127, 127, 127)
+  }
+  
+  .mat-header-cell {
+    color: rgb(102,102,102);
+  }
+  
+  th{
+    padding-top: -100px;
+    font-size: 14px;
+    background-color: rgb(238, 238, 238);
+  }
+  
+  #th_allign{
+    text-align: center;
+  }
+  
+  
+  #button{
+    background-color: rgb(249, 25, 66);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  
+  
+  #height{
+    height: 10px;
+  }
+  
+  * {
+    font-family: 'Nunito', 'Glyphicons Halflings';
+  } 
+  

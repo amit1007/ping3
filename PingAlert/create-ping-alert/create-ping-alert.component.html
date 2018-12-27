@@ -1,0 +1,705 @@
+
+
+<br><br><br>
+<nav id="nanavbar-fixed-top" class="navbar-fixed-top">
+        <mat-progress-bar mode="indeterminate" color ="warn" *ngIf = "visibleProgressBar"></mat-progress-bar>
+        
+</nav>
+
+<!-- <mat-toolbar color="default">
+ <p>Create Alerts</p>
+</mat-toolbar> -->
+
+<br>
+
+<div class="container">
+
+                <div class="row">
+                        <!-- <button id="hide_linear" mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                                {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                        </button> -->
+                        <!-- Form Start here -->
+                <form [formGroup]="frmAlert" (ngSubmit)="onFormSubmit(frmAlert.value)">
+                        
+<!--- - - - - - - - - - - - - - - - - - - - - - -SUMMARY start here - - - - - - - - - - - - -->
+                        <!-- <div style="margin-top: 10%; margin-left: 50%;" class="navbar-fixed-top">                
+                                <div class="row">
+                                        <div class="col-md-9"></div>
+                                        <div class="col-md-3">
+                                                <div *ngIf="showGraphCurrentValue == 'true'" [@enterAnimation]>
+                
+                                                        <div class="form-group">
+                                                        <h5 ><p style="color: grey;" class="example-margin">Measure value: </p> </h5> 
+                                                                
+                                                                
+                                                              <h5><p class="example-margin"><input matInput formControlName="frmCntCurrentValue" readonly></p></h5>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-9"></div>
+                                        <div class="col-md-3" *ngIf="showFilterValue == 'false'" [@enterAnimation]>
+                                                        <div class="form-group">
+                                                        <h5 > <p class="example-margin" style="color: grey;"  > Filtered value: </p> </h5> 
+                                                                                                                                <h5><p class="example-margin"><input matInput  formControlName="filterValue" readonly></p></h5>
+                                                        </div>
+                                        </div>
+                                </div>
+                        
+                        </div>                   -->
+                        <!-- <div style="margin-top: 11%; margin-left: 73%;" class="navbar-fixed-top summary">                
+                                <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                                <div *ngIf="showGraphCurrentValue=='true'" [@enteranimation]="">
+                                                        
+                                                       
+                                                        <div class="form-group">
+
+                                                                        <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p style="color: grey;" class="example-margin">Alert Name: </p> </h5>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p class="example-margin"><input matInput="" formControlName="frmCntAlertName" readonly=""></p></h5>
+                                                                                        </div>
+                                                                        </div>
+                                                        
+                                                                        <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p style="color: grey;" class="example-margin">Application: </p> </h5>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p class="example-margin"><input matInput="" [value]="frmCntApplication" readonly=""></p></h5>
+                                                                                        </div>
+                                                                        </div>
+                                                        
+                                                         
+                                                                        <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p style="color: grey;" class="example-margin">Measure value: </p> </h5>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p class="example-margin"><input matInput="" formControlName="frmCntCurrentValue" readonly=""></p></h5>
+                                                                                        </div>
+                                                                        </div>
+                                                        
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10" *ngIf="showFilterValue =='false'" [@enteranimation]="">
+                                                        <div class="form-group">
+
+                                                                        <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5> <p class="example-margin" style="color: grey;"> Filtered value: </p> </h5> 
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p class="example-margin"><input matInput="" formControlName="filterValue" readonly=""></p></h5>
+                                                                                        </div>
+                                                                        </div> 
+
+                                                                        <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5> <p class="example-margin" style="color: grey;">Condition: </p> </h5> 
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                                        <h5><p class="example-margin"><input matInput="" formControlName="frmCntCondition" readonly=""></p></h5>
+                                                                                        </div>
+                                                                        </div> 
+                                                
+                                                        
+                                                        </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                </div>
+
+                                <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10" *ngIf="showTrigger =='false'" [@enteranimation]="">
+                                                                <div class="form-group">
+        
+                                                                                <div class="row">
+                                                                                                <div class="col-md-6">
+                                                                                                                <h5> <p class="example-margin" style="color: grey;"> Loop: </p> </h5> 
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                                <h5><p class="example-margin"><input matInput="" formControlName="frmCntLoopDiamention" readonly=""></p></h5>
+                                                                                                </div>
+                                                                                </div> 
+        
+                                                                                <div class="row">
+                                                                                                <div class="col-md-6">
+                                                                                                                <h5> <p class="example-margin" style="color: grey;">Trigger: </p> </h5> 
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                                <h5><p class="example-margin"><input matInput="" formControlName="frmCntTrigger" readonly=""></p></h5>
+                                                                                                </div>
+                                                                                </div> 
+                                                        
+                                                                
+                                                                </div>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                </div>
+                    
+                        
+                        </div> -->
+<!-- - - - - - - - - - - - - - - - - - - - - SUMMARY ends here - - - - - - - - - - - - - - - -  -->
+                        <div class="controls">
+        <!-- AlertID And Alert Name -->
+                                <mat-vertical-stepper  #stepper>
+                                        <mat-step [formGroup]="frmAlert" > 
+                                                <ng-template matStepLabel>Alert Details</ng-template>
+                                                        <mat-card>
+                                                        <div class="row">
+                                                                <div class="col-md-5">
+                                                                        <div class="form-group">
+
+                                                                                <mat-form-field class="example-full-width">
+                                                                                        <input matInput placeholder="Alert Name" formControlName="frmCntAlertName" >
+                                                                                </mat-form-field>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-1"></div>
+                                                                        
+                                                                <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                        <mat-form-field class="example-full-width" id="alertID">
+                                                                                <input matInput placeholder="Alert ID" formControlName="frmCntAlertID" readonly >
+                                                                        </mat-form-field>
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                <!-- DeliverTo And Recipient -->
+                                                        <div class="row">
+                                                                <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                        <mat-form-field class="example-full-width">
+                                                                                <mat-select   placeholder="Deliver To" formControlName="frmCntDelivertTo" multiple>
+                                                                                <mat-option value="Email">Email</mat-option>
+                                                                                <mat-option value="MobileApp">Mobile App Notification</mat-option>
+                                                                                </mat-select>
+                                                                        </mat-form-field>
+                                                                </div>
+                                                                </div>
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-3">
+                                                                <div *ngIf="HideField" class="form-group">
+                                                                        <mat-form-field class="example-full-width">
+                                                                                <input matInput placeholder="Recipient"  formControlName="frmCntRecipient">                                                  
+                                                                        </mat-form-field>                                                 
+                                                                        
+                                                                </div>
+                                                                </div>
+                                                                <div class="col-md-2"> 
+                                                                        <!-- *ngIf="HideField" -->
+                                                                        <div *ngIf="HideField" class="form-group">
+                                                                                        <mat-form-field class="example-full-width">
+                                                                                                <input matInput placeholder="Mobile User"  formControlName="frmCntMobileUser">                                                  
+                                                                                        </mat-form-field>                                                 
+                                                                                        
+                                                                                </div>
+                                                                <!-- <div class="form-group">
+                                                                        <mat-form-field class="example-full-width">
+                                                                                <mat-select placeholder="Mobile user"  formControlName="frmCntMobileUser">
+                                                                                        <mat-option >None</mat-option>
+                                                                                        <mat-option *ngFor="let mobUser of MobUser" [value]="mobUser" >
+                                                                                        {{mobUser.Email}}
+                                                                                        </mat-option>
+                                                                                </mat-select>
+                                                                        </mat-form-field>                                               
+                                                                        
+                                                                </div> -->
+                                                        </div>
+                                                        </div>
+                                                        </mat-card>
+                                                <div>
+                                                        <button id="next_back" mat-raised-button color="warn" type="button" matStepperNext>Next</button>
+                                                </div>
+                                        </mat-step>                
+                                        <!-- DataSource -->
+                                        <mat-step [formGroup]="frmAlert" > 
+                                                        <ng-template matStepLabel>Data Source</ng-template>
+                                                        <mat-card>
+                                                                <div class="row">
+                                                                        <div class="col-md-6">
+
+                                                                        <!-- Application -->
+                                                                                                <div class="row">
+                                                                                                        <div class="col-md-5" id="widthManage">
+                                                                                                        <div class="form-group">
+                                                                                                                <mat-form-field class="App_Dia_Mea-full-width">
+                                                                                                                        <mat-select placeholder="Application" [(value)]="selected" formControlName="frmCntApplication">
+                                                                                                                        <mat-option (click)="showGraphCurrentValue = false ">None</mat-option>
+                                                                                                                        <mat-option *ngFor="let qlikSenseApps of QlikSenseApps" (click)="showGraphCurrentValue = false "  [value]="qlikSenseApps" (click)="getSessionData(qlikSenseApps.Appid)" >
+                                                                                                                                {{qlikSenseApps.AppName}}
+                                                                                                                        </mat-option>
+                                                                                                                        </mat-select>
+                                                                                                                        <mat-error>
+                                                                                                                                <span *ngIf="!frmAlert.get('frmCntApplication').valid && frmAlert.get('frmCntApplication').touched">Please Select Application Name</span>
+                                                                                                                        </mat-error>
+                                                                                                                </mat-form-field>
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                </div>
+                                                                        <!-- Measures -->
+                                                                                                <div class="row">
+                                                                                                                <div class="col-md-5" id="widthManage">
+                                                                                                                <div class="form-group">
+                                                                                                                        <mat-form-field class="App_Dia_Mea-full-width">
+                                                                                                                                <mat-select placeholder="Measure"  formControlName="frmCntMeasures">
+                                                                                                                                <mat-option (click)="showGraphCurrentValue = false ">None</mat-option>
+                                                                                                                                <mat-option *ngFor="let qlikSenseMeasures of QlikSenseMeasures" (click)="getMeasuresValue(qlikSenseMeasures.pingMeasuresqDef,qlikSenseMeasures.Appid)" [value]="qlikSenseMeasures" (click)="showGraphCurrentValue = 'true' "> 
+                                                                                                                                        {{qlikSenseMeasures.pingMeasuresqLabel}}
+                                                                                                                                </mat-option>
+                                                                                                                                <!-- <mat-option value="option3" (click)="showGraphCurrentValue = 'true' "  >Option 3</mat-option> (click)="showGraphCurrentValue = 'true' " -->
+                                                                                                                                </mat-select>
+                                                                                                                                <mat-error>
+                                                                                                                                        <span *ngIf="!frmAlert.get('frmCntMeasures').valid && frmAlert.get('frmCntMeasures').touched">Please enter User Name</span>
+                                                                                                                                </mat-error>
+                                                                                                                        </mat-form-field>
+                                                                                                                        
+                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-1"> </div>
+                                                                                                                <div class="col-md-5">
+                                                                                                                               
+                                                                                                </div>
+                                                                                                </div>
+                                                                                                     
+                                                                                                <div class="row">
+                                                                                                                        <div class="col-md-10" id="widthManage">
+                                                                                                                        <div class="form-group">
+                                                                                                                                <mat-form-field class="App_Dia_Mea-full-width">
+                                                                                                                                        <mat-select placeholder="Formatting"  formControlName="frmCntNumberformat">
+                                                                                                                                        <mat-option (click)="getNumFormatDefault()">None</mat-option>
+                                                                                                                                
+                                                                                                                                                <mat-option *ngFor="let numberformat of numberformats" (click)="getNumFormat()" [value]="numberformat.value">
+                                                                                                                                                        {{numberformat.viewValue}}
+                                                                                                                                                </mat-option>
+                                                                                                                                        </mat-select>
+                                                                                                                                </mat-form-field>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                </div>
+
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                                <div class="row" id="alertID">
+                                                                                        <div class="col-md-10" id="widthManage">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-form-field class="App_Dia_Mea-full-width">
+                                                                                                                <mat-select placeholder="Data Source"  formControlName="frmCntDataSource">
+                                                                                                                <mat-option value="QlikSenseApplication" selected>Qlik Sense Application</mat-option>
+                                                                                                                </mat-select>
+                                                                                                        </mat-form-field>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                                
+                                                                                <br><br>
+                                                                                        <div  >
+                                                                                                        <div *ngIf="showGraphCurrentValue" [@enterAnimation]>
+                
+                                                                                                                        <div class="form-group">
+                                                                                                                        <h5 ><p style="color: grey;" class="example-margin">This is the current measure value: </p> </h5> 
+                                                                                                                                <!-- <h1 formControlName="frmCntCurrentValue">40%</h1> -->
+                                                                                                                                
+                                                                                                                              <h1><p class="example-margin"><input matInput formControlName="frmCntCurrentValue" readonly></p></h1>
+                                                                                                                        </div>
+                                                                                                        </div>
+                                                                        <!-- Alert History -->
+                                                                                                                
+                                                                                                                        <!-- <div class="col-md-6"> -->
+                                                                                                                        <!-- <h2 > <p class="example-margin">Alert History</p> </h2><hr> -->
+                                                                                                                                <!-- <div style="display: block;">
+                                                                                                                                        <canvas baseChart width="400" height="200"
+                                                                                                                                                [datasets]="lineChartData"
+                                                                                                                                                [labels]="lineChartLabels"
+                                                                                                                                                [options]="lineChartOptions"
+                                                                                                                                                [colors]="lineChartColors"
+                                                                                                                                                [legend]="lineChartLegend"
+                                                                                                                                                [chartType]="lineChartType"
+                                                                                                                                                (chartHover)="chartHovered($event)"
+                                                                                                                                                (chartClick)="chartClicked($event)"></canvas>
+                                                                                                                                </div> -->
+                                                                                                                        <!-- </div> -->
+                                                                                                                
+                                                                                                        
+                        
+                                                                                        </div>
+                                                                        </div>
+                                                                </div>
+                                                                
+                                                        </mat-card>
+                                                                <div>
+                                                                        <button id="next_back" mat-raised-button color="warn" type="button" matStepperPrevious>Back</button>&nbsp;
+                                                                        <button id="next_back" mat-raised-button color="warn" type="button" matStepperNext>Next</button>
+                                                                </div>
+                                        </mat-step>         
+                                        <!-- Number Format -->
+                                        <mat-step [formGroup]="frmAlert" > 
+                                                <ng-template matStepLabel>Alert Condition</ng-template>
+                                        <mat-card>                                                                                                                             
+                                                
+                                               
+                                                <!-- Field And Value -->
+                                                <div class="row">
+                                                        
+                                                        <div class="form-group">                        
+                                                                <div formGroupName="frmCntFieldValue">
+                                                                        <div class="col-md-5">
+                                                                                        <mat-form-field class="example-full-width">
+                                                                                                        <mat-select placeholder="Filter by Dimension"  formControlName="Field">
+                                                                                                                <mat-option (click)="showFieldValue = false " (click)="getRemoveFieldValue()" value =[]>None</mat-option>
+                                                                                                                <mat-option *ngFor="let qlikSenseDiamentions of QlikSenseDiamentions" (click)="getFieldValue(qlikSenseDiamentions)" [value]="qlikSenseDiamentions">
+                                                                                                                {{qlikSenseDiamentions.diamention.pingDiamentionTitle}}
+                                                                                                                </mat-option>
+                                                                                                                <!-- <mat-option value="option3" (click)="showFieldValue = 'true' " >Option 3</mat-option> -->
+                                                                                                        </mat-select>
+                                                                                        </mat-form-field>  
+                                                                        </div>  
+                                                                        <div class="col-md-1"></div>
+                                                                        <div class="col-md-4">        
+                                                                                <mat-form-field class="example-full-width">
+                                                                                        <mat-select formControlName="Value" multiple>                                                                                                                                                                       
+                                                                                                <mat-option *ngFor="let fields of Fields" [value]="fields" >
+                                                                                                        {{fields}}
+                                                                                                </mat-option>                                                                                                                                                  
+                                                                                        </mat-select>
+                                                                                </mat-form-field>
+                                                                        </div>  
+                                                                        <div class="col-md-2">
+                                                                                <button id="next_back" mat-raised-button color="warn" value="Add" type="button" (click)="getAddFilter()">Add Filter</button>
+                                                                        <!-- <button type="button" mat-stroked-button class="text-ping" (click)="getFilter()"><mat-icon class="text-ping" matSuffix>add_circle</mat-icon></button> -->
+                                                                        </div>  
+                                                                          <!-- Selected Field And Value -->
+                                                                          <div class="row">
+                                                                                <div class="col-md-10" >
+                                                                                        <div class="form-group">
+                                                                                                <div class="table-responsive" >
+                                                                                                        <table mat-table [dataSource]="dataSource" matSort class=" mat-elevation-z8 table-bordered table-striped" >
+                                                                                                  
+                                                                                                     
+                                                                                                            <!-- Field Column -->
+                                                                                                            <ng-container matColumnDef="Field" >
+                                                                                                            <th  mat-header-cell *matHeaderCellDef class="text-center">Field</th>
+                                                                                                            <td mat-cell *matCellDef="let element"> {{element.Field}} </td>
+                                                                                                            </ng-container>
+                                                                                                  
+                                                                                                            <!-- Value Column -->
+                                                                                                            <ng-container matColumnDef="Value" >
+                                                                                                              <th mat-header-cell  *matHeaderCellDef class="text-center" id="th_allign" > Value </th>
+                                                                                                             <td mat-cell *matCellDef="let element">  &nbsp; {{element.Value}} </td>
+                                                                                                        
+                                                                                                            </ng-container> 
+                                                                                                            
+                                                                                                            <!-- Delete Column -->
+                                                                                                            <ng-container matColumnDef="Delete" >
+                                                                                                                <th mat-header-cell  *matHeaderCellDef class="text-center" id="th_allign" > Delete </th>
+                                                                                                                <td mat-cell class="text-center" *matCellDef="let element; let i =index" > 
+                                                                                                                 <a matTooltip="Delete" style="cursor: pointer;" (click)="getremoveFilter(i)"> <i class="glyphicon glyphicon-trash"></i></a>
+                                                                                                              
+                                                                                                                      
+                                                                                                                </td>
+                                                                                                            </ng-container> 
+                                                                                                                
+                                                                                                            
+                                                                                                     
+                                                                                                        
+                                                                                                  
+                                                                                                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                                                                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                                                                                          </table>
+                                                                                                          <button class="pull-right" id="next_back" mat-raised-button color="warn" value="Add" type="button" (click)="showFilterValue = false" (click)="fetchFilterValue()">Get Filtered Value</button>
+ 
+                                                                                                    </div>  
+                                                                                        </div>
+                                                                                </div>
+                                                                                <!-- <div class="col-md-2">
+                                                                                         <button id="next_back" mat-raised-button color="warn" value="Add" type="button" (click)="showFilterValue = 'false'" (click)="fetchFilterValue()">get Filter value</button> 
+                                                                                </div> -->
+                                                                        </div>                                 
+                                                                                
+                                                                </div>  
+                                                                <div class="col-md-5" *ngIf="!showFilterValue" [@enterAnimation]>
+                                                                                <div class="form-group">
+                                                                                <h5 > <p style="color: grey"class="example-margin" >The current value of measure with filter applied is: </p> </h5> 
+                                                                                        <!-- <h1 formControlName="frmCntCurrentValue">40%</h1> -->
+                                                                                        <h1><input matInput  formControlName="filterValue" readonly></h1>
+                                                                                </div>
+                                                                </div>  
+
+                                                        </div>
+                                                </div> 
+                                                <!-- Condition And function -->
+                                                <div class="row">
+                                                        <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                        <mat-form-field class="example-full-width">
+                                                                                <mat-select  placeholder="Select Condition"  formControlName="frmCntCondition">
+                                                                                <mat-option>None</mat-option>
+                                                                                <mat-option value="equalto">equal to</mat-option>
+                                                                                <mat-option value="lessthan">less than</mat-option>
+                                                                                <mat-option value="greaterthan">greater than</mat-option>
+                                                                                <mat-option value="lessthanorequalto">less than or equal to</mat-option>
+                                                                                <mat-option value="greaterthanorequalto">greater than or equal to</mat-option>
+                                        
+                                                                                </mat-select>
+                                                                                <mat-error>
+                                                                                                <span *ngIf="!frmAlert.get('frmCntCondition').valid && frmAlert.get('frmCntCondition').touched">Please Select Condition</span>
+                                                                                </mat-error>
+                                                                        </mat-form-field>
+                                                                </div>
+                                                        </div>
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-5" id="function">
+                                                                <div class="form-group">
+                                                                        <mat-form-field class="example-full-width">
+                                                                                <input matInput placeholder="Function" type="number" formControlName="frmCntFunction">
+                                                                                <!-- <span matSuffix style="color: lightgrey"><h4><em>fx</em></h4></span> -->
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                        <span *ngIf="!frmAlert.get('frmCntFunction').valid && frmAlert.get('frmCntFunction').touched">Please Select Condition</span>
+                                                                        </mat-error>
+                                                                </div>
+                                                                </div>
+
+                                                </div> 
+                                        </mat-card>
+                                        <div>
+                                                <button id="next_back" mat-raised-button color="warn" type="button" matStepperPrevious>Back</button>&nbsp;
+                                                <button id="next_back" mat-raised-button color="warn" type="button" matStepperNext>Next</button>
+                                        </div>
+                                        </mat-step>
+
+                                        <!-- LOOP DIMENSION -->
+                                        <mat-step [formGroup]="frmAlert" > 
+                                                        <ng-template matStepLabel>Drill into Dimension</ng-template>
+                                                <mat-card>
+                                                                         <!-- Loop Diamention -->
+                                                                         <div class="row">
+                                                                                        <div class="col-md-10" >
+                                                                                                <div class="form-group">
+                                                                                                        <mat-form-field class="App_Dia_Mea-full-width">
+                                                                                                                <mat-select placeholder="Dimension"  formControlName="frmCntLoopDiamention">
+                                                                                                                <mat-option (click)="showDiamentionValue = false" (click)="getRemoveDiamention()"  value ="">None</mat-option>
+                                                                                                                <mat-option *ngFor="let qlikSenseDiamentions of QlikSenseDiamentions"  (click)="getDiamention(qlikSenseDiamentions)" [value]="qlikSenseDiamentions" (click)="showDiamentionValue = 'true' ">
+                                                                                                                {{qlikSenseDiamentions.diamention.pingDiamentionTitle}}
+                                                                                                                </mat-option>
+                                                                                                                <!-- <mat-option value="option3" (click)="showFieldValue = 'true' " >Option 3</mat-option> -->
+                                                                                                                </mat-select>
+                                                                                                        </mat-form-field>
+                                                                                                </div>
+                                                                                        </div>
+        
+                                                                        </div>
+                                                                         <!-- Loop Diamention Result -->
+                                                                
+                                                </mat-card>
+                                                <div>
+                                                        <button id="next_back" mat-raised-button color="warn" type="button" matStepperPrevious>Back</button>&nbsp;
+                                                        <button id="next_back" mat-raised-button color="warn" type="button" matStepperNext>Next</button>
+                                                </div>
+                                                </mat-step>
+
+
+                                        <!-- onReload and Scheduled -->
+                                        <mat-step [formGroup]="frmAlert" >
+                                                                <ng-template matStepLabel>Alert Schedule</ng-template>
+                                                                <mat-card>
+                                                                        <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                        <div class="form-group">
+                                                                                                <section class="example-section" >
+                                                                                                        <label class="example-margin">Trigger:</label>
+                                                                                                        <mat-radio-group formControlName="frmCntTrigger">
+                                                                                                        <mat-radio-button color="warn" class="example-margin"  value="onReload" (click)="OffAnimation() ">On Reload</mat-radio-button>
+                                                                                                        <mat-radio-button color="warn" class="example-margin"  value="Scheduled" (click)="OnAnimation()">Scheduled</mat-radio-button>
+                                                                                                        </mat-radio-group>
+                                                                                                </section>
+                                                                                        </div>
+                                                                                </div>
+
+                                                                        </div>
+                                                        
+                                                                        <div *ngIf="show" [@enterAnimation]>
+                                                                        
+                                                                                        <div class="row">
+                                                                                                <div class="col-md-12">
+                                                                                                        <div class="form-group" >
+                                                                                                                <mat-tab-group color="warn" >
+                                                                                                <!-- Hourly -->
+                                                                                                                        <mat-tab label="Hourly"> 
+                                                                                                                                        <br>
+                                                                                                                                              
+                                                                                                                                        <div formGroupName="frmGrpShedules">
+                                                                                                                                        <!-- <p id="days">  Set Time : <input matInput type="time" formControlName="time" ></p>            -->
+                                                                                                                                        <!-- <h2 >  Set Time : <input matInput type="time" formControlName="time" ></h2>  -->
+                                                                                                                                        <span class="example-margin" id="days">Sun</span>  
+                                                                                                                                        <mat-checkbox color="warn" value="SUN"  formControlName="SUN"> </mat-checkbox>
+                                                                                                                                        <span class="example-margin" id="days">Mon</span>  
+                                                                                                                                        <mat-checkbox color="warn" value="MON"  formControlName="MON"> </mat-checkbox>                                                                                                                                        
+                                                                                                                                        <span class="example-margin" id="days">Tue</span>  
+                                                                                                                                        <mat-checkbox color="warn" value="TUE"  formControlName="TUE"> </mat-checkbox>
+                                                                                                                                        <span class="example-margin" id="days">Wed</span>  
+                                                                                                                                        <mat-checkbox color="warn" value="WED"   formControlName="WED"> </mat-checkbox>
+                                                                                                                                        <span class="example-margin" id="days">Thur</span>     
+                                                                                                                                        <mat-checkbox color="warn" value="THUR"   formControlName="THU"> </mat-checkbox>
+                                                                                                                                        <span class="example-margin" id="days">Fri</span>
+                                                                                                                                        <mat-checkbox color="warn" value="FRI"  formControlName="FRI"> </mat-checkbox>
+                                                                                                                                        <span class="example-margin" id="days">Sat</span>  
+                                                                                                                                        <mat-checkbox color="warn" value="SAT"   formControlName="SAT"> </mat-checkbox>
+                                                                                                                                <br><br>
+                                                                                                                                        <div class="col-md-3">
+                                                                                                                                                Time Interval:
+                                                                                                                                                <strong>Hours</strong>:<input type="number" placeholder=" Hours" formControlName="intervalTimeScheduleHours" class="form-control"  /> 
+                                                                                                                                                <strong>Minutes</strong>:<input type="number" placeholder=" Minutes" formControlName="intervalTimeScheduleMins" class="form-control"  />
+                                                                                                                                        </div>
+                                                                                                                                        <div class="col-md-1"></div>
+                                                                                                                                        <div class="col-md-2">
+                                                                                                                                        <strong>Between :</strong> <input placeholder="Start Time" class="form-control" formControlName="startTimeSchedule"  atp-time-picker value= "00:00"/>
+                                                                                                                                        <br> <input  class="form-control" placeholder="End Time" name="time" formControlName="endTimeSchedule" atp-time-picker value="23:59"/>
+                                                                                                                                        </div>
+                                                                                                                                        <!-- <div class="col-md-1"></div>
+                                                                                                                                        <div class="col-md-3">
+                                                                                                                                        <strong>Repeat For</strong>: Counts<input type="number" number class="form-control" name="number" /> or
+                                                                                                                                        <strong>Until</strong> <input type="date" name="date" class="form-control">
+                                                                                                                                        </div> -->
+                                                                                                                                        </div>
+                                                                                                                        </mat-tab>  
+                                                                                                <!-- Daily -->
+                                                                                                                <mat-tab label="Daily"> 
+                                                                                                                                <div formGroupName="frmGrpShedules">
+                                                                                                                                
+                                                                                                                                                <br><br>
+                                                                                                                                        
+                                                                                                                                        <span class="example-margin" id="days">Sun</span>  
+                                                                                                                                        <mat-checkbox value="SUN"  formControlName="SUN"> </mat-checkbox>
+                                                                                                                                        
+                                                                                                                                
+                                                                                                                                                <span class="example-margin" id="days">Mon</span>  
+                                                                                                                                                <mat-checkbox value="MON"  formControlName="MON"> </mat-checkbox>
+                                                                                                                                
+                                                                                                                                
+                                                                                                                                                <span class="example-margin" id="days">Tue</span>  
+                                                                                                                                        <mat-checkbox value="TUE"  formControlName="TUE"> </mat-checkbox>
+                                                                                                                                
+                                                
+                                                                                                                                                <span class="example-margin" id="days">Wed</span>  
+                                                                                                                                        <mat-checkbox value="WED"   formControlName="WED"> </mat-checkbox>
+                                                                                                                                
+                                                                                                                                
+                                                                                                                                        <span class="example-margin" id="days">Thur</span>     
+                                                                                                                                        <mat-checkbox value="THUR"   formControlName="THU"> </mat-checkbox>
+                                                                                                                                
+                                                                                                                                
+                                                                                                                                        <span class="example-margin" id="days">Fri</span>
+                                                                                                                                        <mat-checkbox value="FRI"  formControlName="FRI"> </mat-checkbox>
+                                                                                                                                
+                                                                                                                                        
+                                                                                                                                        <span class="example-margin" id="days">Sat</span>  
+                                                                                                                                        <mat-checkbox value="SAT"   formControlName="SAT"> </mat-checkbox>
+                                                                                                                                
+                                                                                                                                
+                                                                                                                                        <br><br>
+                                                                                                                                                <div class="col-md-3">
+                                                                                                                                                        Time :<input class="form-control" name="daily_timeInterval" atp-time-picker value="00:00"/>
+                                                                                                                                                </div><br>
+                                                                                                                                        <!-- <div class="col-md-3">
+                                                                                                                                                <mat-checkbox  [labelPosition]="after" > Include in Daily Digest </mat-checkbox>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="col-md-3">
+                                                                                                                                                <strong>Repeat For</strong>: Counts<input type="number" number class="form-control" name="number" /> or
+                                                                                                                                                <strong>Until</strong> <input type="date" name="date" class="form-control">
+                                                                                                                                        </div> -->
+                                                                                                                        </div>
+                                                                                                                </mat-tab>
+                                                                                <!-- Weekly -->
+                                                                                                                        <!-- <mat-tab label="Weekly">
+                                                                                                                                        <br>
+                                                                                                                                        <mat-checkbox  [labelPosition]="after" >I'm a checkbox </mat-checkbox>
+                                                                                                                        </mat-tab> -->
+                                                                        <!-- Monthly -->
+                                                                                                                        <!-- <mat-tab label="Monthly"> 
+                                                                                                                                <div formGroupName="frmGrpShedules">
+                                                                                                                                
+                                                                                                                                <br><br>
+                                                                                                                                
+                                                                                                                                <span class="example-margin" id="days">Sun</span>  
+                                                                                                                                <mat-checkbox value="SUN" color="warn" formControlName="SUN"> </mat-checkbox>
+                                                                                                                                
+                                                                                                                
+                                                                                                                                <span class="example-margin" id="days">Mon</span>  
+                                                                                                                                <mat-checkbox value="MON" color="warn" formControlName="MON"> </mat-checkbox>
+                                                                                                                
+                                                                                                                
+                                                                                                                                <span class="example-margin" id="days">Tue</span>  
+                                                                                                                        <mat-checkbox value="TUE" color="warn" formControlName="TUE"> </mat-checkbox>
+                                                                                                                
+                                                
+                                                                                                                                <span class="example-margin" id="days">Wed</span>  
+                                                                                                                        <mat-checkbox value="WED"  color="warn" formControlName="WED"> </mat-checkbox>
+                                                                                                                
+                                                                                                                
+                                                                                                                        <span class="example-margin" id="days">Thur</span>     
+                                                                                                                        <mat-checkbox value="THUR"  color="warn" formControlName="THUR"> </mat-checkbox>
+                                                                                                                
+                                                                                                                
+                                                                                                                        <span class="example-margin" id="days">Fri</span>
+                                                                                                                        <mat-checkbox value="FRI" color="warn" formControlName="FRI"> </mat-checkbox>
+                                                                                                                
+                                                                                                                        
+                                                                                                                        <span class="example-margin" id="days">Sat</span>  
+                                                                                                                        <mat-checkbox value="SAT"  color="warn" formControlName="SAT"> </mat-checkbox>
+                                                                                                                
+                                                                                                                        
+                                                                                                                        <br><br>
+                                                                                                                        <div class="col-md-3">
+                                                                                                                        Set Time:<input readonly class="form-control" name="time" formControlName="" atp-time-picker value="19:00"/>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        </mat-tab> -->
+                                                                                                                </mat-tab-group>
+                                                                                                        </div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                        
+                                                        <!-- Animation Close -->
+                                                                        </div>
+                                                                </mat-card>
+                                                                <div>
+                                                                        <button id="next_back" mat-raised-button color="warn" type="button" matStepperPrevious>Back</button>&nbsp;
+                                                                        <button id="next_back" mat-raised-button color="warn" type="button" (click)="stepper.reset()">Reset</button>
+                                                                </div>
+                                        </mat-step>
+                                </mat-vertical-stepper>
+                </div>
+                
+<hr>
+                        <div class="row">
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-2">
+                                                <button [disabled]="!frmAlert.valid" type="submit" id="btn-default" class="btn btn-default form-control">Save</button>
+                                        </div>
+                                </div><br><br>
+                         </form>
+
+
+                </div>
+
+</div>
+<div class="footer">
+        <p>Footer</p>
+      </div>
+
+    <!-- <p>Form value: {{ frmAlert.value | json }}</p> -->
+
+

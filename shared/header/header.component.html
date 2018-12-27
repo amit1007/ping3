@@ -1,0 +1,85 @@
+<div class="image">
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <a href="#" class="navbar-brand"></a>
+        <a id="img" routerLink="/signin" class="navbar-brand"><img src="../../../assets/imgs/48x48.png"></a>
+        <!-- <a id="img" routerLink="/signin" class="navbar-brand"><b>Ping</b></a> -->
+        <div class="container">
+            <div class="navbar-header">
+                <button (click)="toggleCollapse()" id="nav-button" type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#example">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" [class.show]="show" id="example">
+                <ul class="nav navbar-nav">
+                </ul>
+                <div id="myDiv">
+                    <ul class="nav navbar-nav">
+                        <!-- <li><a id="menu" class="btn active" routerLink="/home" >Home</a></li> -->
+                        <li><a id="Menu" routerLinkActive="active" routerLink="/pingAlert/alertInbox">My Alerts</a></li>
+                        <!-- <li><a id="menu" routerLink="/suggestions">Suggestions</a></li> -->
+                        <li id="inbox"><a id="Menu" routerLinkActive="active" routerLink="/pingAlert/alertHistory">&nbsp;&nbsp;Inbox&nbsp;&nbsp;</a></li>
+                        <li  id="admin" *ngIf="userRole">
+                            <a class="dropdown" routerLinkActive="active"  appDropdown id="Menu" style="cursor:pointer">Admin
+                                <span class="caret"></span>
+                                
+                                <ul class="dropdown-menu"   style=" margin-left:20px; margin-top: -10px;">
+                                    <li><a style="cursor: pointer;" routerLink="/admin/userDetails">User Management</a></li>
+                                    <li><a style="cursor: pointer;" routerLink="/admin/dataSourceDetails">Data Sources</a></li>
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/delivery-channel">Delivery Channels</a></li> -->
+                                    <li><a style="cursor: pointer;" routerLink="/admin/deliveryChannelDetails">Delivery
+                                            Channels</a></li>
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/Report">Reports</a></li> -->
+
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/CreateDeliveryChannel">Delivery Channels</a></li> -->
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/channelDetails">Cahnnel Details</a></li> -->
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/channelTypeDetails">Cahnnel Type Details</a></li> -->
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/Report">Reports</a></li> -->
+
+                                    <!-- <li><a style="cursor: pointer;" routerLink="/key-generate">Key Generate</a></li>
+                              <li><a style="cursor: pointer;" routerLink="/admin-license">Admin License</a></li>
+                              <li><a style="cursor: pointer;" routerLink="/license-subscription">License Subscription</a></li>
+                              <li><a style="cursor: pointer;" routerLink="/stepper-alert">Stepper Alert</a></li>
+                              <li><a style="cursor: pointer;" routerLink="/channelDetails">Cahnnel Details</a></li>
+                              <li><a style="cursor: pointer;" routerLink="/channelTypeDetails">Cahnnel Type Details</a></li>
+                              <li><a style="cursor: pointer;" routerLink="/TestDelivery">Test</a></li>-->
+
+                                </ul>
+                            </a>
+                        </li>
+                        <!-- <li><a id="reg" routerLink="/signup" type="submit">Register</a></li> -->
+                    </ul>
+                    <ul class="navbar-right" id="right_navbar_items" >
+                        <a class="dropdown" id="user_pre_img" appDropdown>
+                            <a class="dropdown-toggle" role="button"><img src="../../../assets/imgs/001_24x24.png"></a>
+                            <ul class="dropdown-menu"   style="margin-top:10px; margin-left:50px;">
+                                <li> <a style="cursor: pointer;" (click)="openDialog()">User Preferences</a></li>
+                                <!-- *ngIf="userRole" -->
+                                <li *ngIf="AdminFlag" ><a style="cursor: pointer;" routerLink="/admin/channelNameDetails">Channel
+                                        Details</a></li>
+                                <li *ngIf="AdminFlag"><a style="cursor: pointer;" routerLink="/admin/channelTypeDetails">Channel
+                                        Type Details</a></li>
+                                <li><a style="cursor: pointer;" routerLink="/admin/LicenseDetails">License Details</a></li>
+                                <li><a style="cursor: pointer;" routerLink="" (click)='logoutUser()'>Sign Out</a></li>
+                            </ul>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- <ul class="nav navbar-nav navbar-right">
+
+        </ul> -->
+
+
+
+    </nav>
+
+</div>
+<!-- <app-home-page></app-home-page> -->
+<!-- <router-outlet></router-outlet> -->

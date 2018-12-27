@@ -1,0 +1,129 @@
+<br><br><br><br>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-lg-6">
+            <div class="btn-group btn-breadcrumb ">
+                <a routerLink="/home" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+                <a  class="btn btn-default">Admin</a>
+                <a routerLink="/admin/dataSourceDetails" class="btn btn-default">Data Source</a>
+                <a routerLink="/admin/createDataSource" class="btn btn-default active">Create/Edit Data Sources</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <div class="row">
+      <div class="col-md-5"></div>
+      <div class=" col-md-4" ></div>
+      <div class="col-md-3"></div>
+  </div>
+  <br><br>
+
+  <div id="shift">
+  <div class="container" id="container"><br>
+ 
+    <div class="form-group ">
+        <form   [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)" >
+            <div class="row">
+                <div class="col-md-1"></div>
+              <!-- <div class="col-md-2">
+                <div>Source Name</div>
+              </div> -->
+              <div class="col-md-5">
+                <!-- <input class="form-control" formControlName="sourcename"> -->
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Source Name" formControlName="sourcename">
+                </mat-form-field>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <!-- <div class="col-md-2">
+                  <div>User Directory</div>
+                </div> -->
+                <div class="col-md-5">
+                  <!-- <input class="form-control" formControlName="userdirectory"> -->
+                  <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="User Directory" formControlName="userdirectory">
+                  </mat-form-field>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+              <!-- <div class="col-md-1"></div> -->
+               <mat-form-field>
+              <mat-select  placeholder="Connect as" formControlName = "connect">
+                <mat-option *ngFor='let food of foods' [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+              </div>
+            </div>
+      
+             <br>
+             <br>
+             <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-8">
+              <mat-form-field>
+                <input matInput placeholder="MonogoDB Port" formControlName="mongoDbPort">
+              </mat-form-field>
+              </div>
+              </div>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-8">
+              <mat-form-field>
+                <input matInput placeholder="Certificate Password" formControlName="certPassword">
+              </mat-form-field>
+              </div>
+              </div>
+            <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                   
+                    <!-- <input  class="form-control" formControlName="hostname">  -->
+                    <mat-form-field class="example-full-width">
+                      <input matInput   placeholder="Host Name" formControlName="hostname">
+                    </mat-form-field>
+
+
+                  </div> 
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-10">
+
+                      <!-- <input class="form-control" formControlName="connect">  -->
+                      <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Source Type"   formControlName="type">
+                      </mat-form-field>
+                      </div>
+                      <!-- <div class="col-md-7"></div><br> -->
+                      
+                    </div>
+                    <div class="row">
+                    <div class="col-md-8">
+                        <button type="submit" id="btn-default" class="btn btn-default form-control">Test Connection</button>
+                        <!-- <button type="submit" class="btn btn-default">Test Connection</button> -->
+                      </div>
+                    </div>
+      
+                  </div>
+             
+            </div>
+           
+        </form>
+    </div>
+ 
+  <br><br>
+
+</div>
+

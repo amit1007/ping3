@@ -1,0 +1,124 @@
+<br><br><br><br>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"></div>
+        <div class="col-md-4 ">
+          <div class="input-group">
+            <!-- <input type="text" class="form-control" placeholder="Search" id="txtSearch"/> -->
+            <input class="form-control" (keyup)="applyFilter($event.target.value)" placeholder="Search" >
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+         
+  </div>
+    </div>
+  </div>
+<br><br>
+<div class="container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-bordered table-striped">
+    <!-- Name Column -->
+    <ng-container matColumnDef="AlertName">
+      <th mat-header-cell *matHeaderCellDef > Alert Name </th>
+     <td mat-cell *matCellDef="let element">  &nbsp; {{element.alertname}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ApplicationName" >
+      <th mat-header-cell id="th_allign" *matHeaderCellDef class="text-center"> Application Name </th>
+     <td mat-cell *matCellDef="let element"> &nbsp; {{element.AppicationName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Measures">
+      <th mat-header-cell *matHeaderCellDef id="th_allign" class="text-center"> Measures Name </th>
+      <td mat-cell class="text-center" *matCellDef="let element">&nbsp;  {{element.Measures}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="PreviousValue">
+      <th mat-header-cell *matHeaderCellDef id="th_allign">Previous Value  </th>
+      <td mat-cell class="text-center"  *matCellDef="let element"> &nbsp; 
+        <span *ngIf="checkDimensionDetails(element.diamentionStatus) ; else displayPreviousVlaue">
+          <a>View Dimension</a>
+        </span>
+        <ng-template #displayPreviousVlaue>
+            {{element.PreviousValue}}
+        </ng-template>
+        
+         </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="CurrentValue">
+      <th mat-header-cell *matHeaderCellDef id="th_allign" >Current Value  </th>
+     <td mat-cell class="text-center"  *matCellDef="let element" > &nbsp; {{element.CurrentValue.measuresValue}} </td>
+     <!-- <td mat-cell *matCellDef="let element">&nbsp;&nbsp;</td> -->
+    <!-- <td> &nbsp;&nbsp; <i type="button" class="fas fa-ellipsis-h"></i></td> -->
+    </ng-container>
+
+    <!-- Colum Edit/ Delete -->
+    <ng-container matColumnDef="triggereddate">
+          <th mat-header-cell *matHeaderCellDef id="th_allign" >Triggered Date  </th>
+          <td mat-cell class="text-center" *matCellDef="let element"> &nbsp;{{element.triggeredTime | date:"yyyy-MM-dd"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="triggeredTime">        
+    <th mat-header-cell *matHeaderCellDef id="th_allign" >Triggered Time  </th>
+    <td mat-cell class="text-center" *matCellDef="let element"> &nbsp; {{element.triggeredTime | date:"shortTime"}} </td>
+  </ng-container>
+  <!-- View -->
+  <ng-container matColumnDef="View">
+    <th mat-header-cell *matHeaderCellDef id="th_allign" >View  </th>
+    <td mat-cell *matCellDef="let element" class="text-center"> 
+     <div class="row">
+    <div class="col-md-2">
+       <a style="cursor: pointer;"><i matTooltip ="View" style="size: 20px; margin-left: 30px;" class="glyphicon glyphicon-eye-open" [routerLink]="['/pingAlert/historyDetails/',element._id]"></i></a>  
+ 
+    </div>
+
+ 
+  </div>
+  </td>
+
+</ng-container>
+        <!-- <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;<strong>Edit / Delete</strong>  </th>
+
+       <td>
+         <div class="row">
+           <div class="col-md-2">
+            <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+           </div>
+           <div class="col-md-2">
+              <button class="btn btn-primary"> <i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+         </div>
+       </td> -->
+
+   
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <br>
+  <div class="row">
+    <!-- <div class="col-md-3">
+        <a mat-raised-button color="primary" [routerLink]="['/alert_Create']"><mat-icon>add</mat-icon>Create Alert</a>
+    </div> -->
+    <div class="col-md-12">
+        <mat-paginator [pageSizeOptions]="[10,20,50,100,150,200,250]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

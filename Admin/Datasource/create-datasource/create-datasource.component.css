@@ -1,0 +1,31 @@
+
+input[type="file"] {
+    display: none;
+  }
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  #container{
+    border: 1px dotted rgb(173, 170, 170);
+  }
+  .example-full-width {
+  width: 100%;
+  }
+  .mat-form-field{
+  width: 80%;
+  }
+  #btn-default{
+    background-color: rgb(249, 25, 66);
+    color: rgb(255, 255, 255);
+  }
+  
+  #google{
+  
+    opacity: 5px;
+    color: lightgray;
+  }
+  

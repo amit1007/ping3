@@ -1,0 +1,31 @@
+#view{
+    background-color:red;
+    padding-top: 10px;
+}
+
+.btn-primary{
+    margin-left: 50%;
+}
+
+.container{
+    /* border: 1px solid rgb(236, 235, 235); */
+    width: 80%;
+}
+
+/* #margin{
+    margin-left: 10% ;
+} */
+
+.btn-primary {
+  background-color:rgb(231, 76, 60);
+  border: rgb(231, 76, 60);
+}
+
+
+.example-full-width {
+    width: 100%;
+  }
+
+  .text-ping{
+    color: red
+}
