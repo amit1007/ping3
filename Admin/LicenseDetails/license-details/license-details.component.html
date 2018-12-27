@@ -1,0 +1,94 @@
+<div class="row headerMargin">
+  <div class="col-lg-4 col-lg-offset-4">
+    <mat-card>
+      <div class="row">
+        <div class="col-lg-12">
+            <h4 class="text-success"><b>Ping License Details</b></h4>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-3">
+            <img src="../../../../assets/imgs/LicenseImg.png" height="100" width="100">
+        </div>
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-lg-5">
+                <p>User ID :</p>
+            </div>
+            <div class="col-lg-7">
+                <p>  {{userID}}</p>
+                
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-5">
+                  <p>User Name :</p>
+              </div>
+              <div class="col-lg-7">
+                  <p>  {{UserName}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <p>User Role :</p>
+                </div>
+                <div class="col-lg-7">
+                    <p>  {{UserRole}}</p>
+                  </div>
+            </div>
+              <div class="row">
+                  <div class="col-lg-5">
+                      <p>License :</p>
+                  </div>
+                  <div class="col-lg-7">
+                      <p>  Trail Version</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-5">
+                      <p>Key Status :</p>
+                  </div>
+                  <div class="col-lg-7">
+                      <p>  {{KeyStatus}}</p>
+                    </div>
+              </div>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <p>Activation Date :</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>  {{ActivationDate}}</p>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <p>Expiration Date :</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>  {{ExpirationDate}}</p>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <p>Days Remaining :</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>  {{DaysRemainig}}</p>
+                      </div>
+                </div>
+        </div>
+      </div>
+<br>
+<div class="row text-center">
+        <div class="col-lg-4 col-lg-offset-2">
+          <input type="button" [disabled]="RenewStatus" (click)="renewKey()" class="btn btn-success" value="Renew License"/>
+        </div>
+        <div class="col-lg-4">
+            <input type="button"  class="btn btn-info" value="More Info" style="padding-left: 20px"/>
+          </div>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

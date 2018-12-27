@@ -1,0 +1,16 @@
+.headerMargin{
+    padding-top: 10%;
+    }
+    .PaddingTop{
+        padding-top: "100px";
+        }
+    .PaddingHeader
+    {
+        padding-left: 50px;padding-top: 30px
+    }
+    .footer {
+        position: fixed;
+        background-color: darkgray;
+        color: black;
+        text-align: center;
+    }

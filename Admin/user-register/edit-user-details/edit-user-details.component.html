@@ -1,0 +1,151 @@
+
+<br><br><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+          <div class="btn-group btn-breadcrumb ">
+              <a routerLink="/pingAlert/alertInbox" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+              <a class="btn btn-default">Admin</a>
+              <a routerLink="/UserRoleDetails" class="btn btn-default">User Management</a>
+              <a class="btn btn-default active">Create/Edit User</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <br>
+    <form [formGroup]="pingUserRoleFrm" (ngSubmit)="onFormSubmit(pingUserRoleFrm.value)">
+      <div class="col-md-1"></div>
+      <div class="col-md-9 ">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                 <div class="col-md-6">
+                  <div class="row">
+                      <!-- <div class="col-lg-1 pull-left"><mat-icon>person_add</mat-icon></div>
+                      <div class="col-lg-11"><h5>Please enter the user details below: </h5></div> -->
+                    </div>
+                      
+                      <div class="col-md-9">           
+                        
+                          <mat-form-field class="example-full-width" appearance="fill" >
+                              <mat-label>User ID </mat-label>
+                              <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+                              <input matInput placeholder="Enter User ID" formControlName="PingUserID"
+                                     [errorStateMatcher]="matcher">
+                                     <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->                         
+                              <mat-error>
+                                <span *ngIf="!pingUserRoleFrm.get('PingUserID').valid && pingUserRoleFrm.get('PingUserID').touched">Please enter User ID</span>
+                              </mat-error>
+                            </mat-form-field>
+                      </div>
+                      <div class="col-md-9">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>User Name </mat-label>
+                              <!-- <span matPrefix><mat-icon matPrefix>edit</mat-icon> &nbsp;</span> -->
+                              <input matInput placeholder="Enter User Name" formControlName="PingUserName"
+                                     [errorStateMatcher]="matcher">
+                              <mat-error>
+                                <span *ngIf="!pingUserRoleFrm.get('PingUserName').valid && pingUserRoleFrm.get('PingUserName').touched">Please enter User Name</span>
+                              </mat-error>
+                            </mat-form-field>
+                      </div>  
+
+                    <!-- Password -->
+                     <div class="col-md-9">           
+                        
+                      <mat-form-field class="example-full-width" appearance="fill" >
+                          <mat-label>Password*</mat-label>
+                          <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+                          <input type="password" matInput placeholder="Enter Password" formControlName="password"
+                                 [errorStateMatcher]="matcher">
+                                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                 
+                          <mat-error>
+                            <span *ngIf="!pingUserRoleFrm.get('password').valid && pingUserRoleFrm.get('password').touched">Please enter User ID</span>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+
+
+                      <div class="col-md-9">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>User Directory *</mat-label>
+                              <!-- <span matPrefix>+1 &nbsp;</span> -->
+                              <input matInput placeholder="Enter User Directory" formControlName="PingUserDirectory"
+                                     [errorStateMatcher]="matcher">
+                              <mat-error>
+                                <span *ngIf="!pingUserRoleFrm.get('PingUserDirectory').valid && pingUserRoleFrm.get('PingUserDirectory').touched">Please enter User Directory</span>
+                              </mat-error>
+                            </mat-form-field>
+                      </div>
+                     
+                      
+                      <!-- EmailId -->
+                      <div class="col-md-9">           
+                        
+                        <mat-form-field class="example-full-width" appearance="fill" >
+                            <mat-label>Email Id*</mat-label>
+                            <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+                           <input  matInput placeholder="Enter Email Id" formControlName="EmailID"
+                            [errorStateMatcher]="matcher">  
+                                   <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->       
+                            <mat-error>
+                              <span *ngIf="!pingUserRoleFrm.get('EmailID').valid && pingUserRoleFrm.get('EmailID').touched">Please enter User ID</span>
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>User Access </mat-label>
+                          <mat-select placeholder="User Access" formControlName="PingUserAccess" name="UsreAccess" required>
+                              <mat-option>--  Select Access --</mat-option>
+                            <mat-option *ngFor="let access of AAccess" [value]="access.name">
+                              {{access.name}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>
+                              <span *ngIf="!pingUserRoleFrm.get('PingUserAccess').valid && pingUserRoleFrm.get('PingUserAccess').touched">Please select user access</span>
+                            </mat-error>
+                          <!-- [selected]="car.color.id == qlikSenseApps.Appid" -->
+                        </mat-form-field>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>User Role</mat-label>
+                          <mat-select placeholder="User Role" formControlName="PingRole" name="userRole" required >
+                              <mat-option>-- Select Role --</mat-option>
+                            <mat-option *ngFor="let role of RRole" [value]="role.name">
+                              {{role.name}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>
+                              <span *ngIf="!pingUserRoleFrm.get('PingRole').valid && pingUserRoleFrm.get('PingRole').touched">Please select user role</span>
+                            </mat-error>
+                          <!-- [selected]="car.color.id == qlikSenseApps.Appid" -->
+                        </mat-form-field>
+                        <!-- <form #form>
+                            <div class="row">
+                              <div class="col-md-2">
+                                    <input type="file" name="file" 
+                                    class="upload" accept="*.csv" (change)="changeListener($event.target.files)">
+                              </div>
+                            </div>
+                          </form> -->
+                      </div> 
+                </div>
+                  
+              </div>
+            </div>
+
+            <!-- <br><br> -->
+          </div>
+      </div>
+        <button type="submit" id="save" class="col-md-1" [disabled]="!pingUserRoleFrm.valid" mat-raised-button >Update</button>
+        <button mat-raised-button id="cancel" class="col-md-1" [routerLink]="['/admin/userDetails']" >Cancel</button>              
+    </form>

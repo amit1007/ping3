@@ -1,0 +1,319 @@
+<br><br><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+          <div class="btn-group btn-breadcrumb ">
+              <a routerLink="/pingAlert/alertInbox" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+              <a class="btn btn-default">Admin</a>
+              <a routerLink="/admin/deliveryChannelDetails" class="btn btn-default">Delivery Channel Details</a>
+              <a class="btn btn-default active">Create/Edit Delivery Channel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <br>
+    <form [formGroup]="frmEditDeliveryChannel" (ngSubmit)="onFormSubmit(frmEditDeliveryChannel.value)">
+      <div class="col-lg-9 col-lg-offset-1">
+          <mat-card>
+              <div class="row">
+                <!-- <div class="col-md-1"></div> -->
+                <!-- <div class=" col-md-3">
+                  Delievery Channel Name:
+                </div> -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>channel Name </mat-label>
+                    <!-- <mat-select placeholder="Channel Name" formControlName="DeliveryChannelName" name="ChannelName1" required>
+                        <mat-option>--  Select Cahnnel Name --</mat-option>
+                      <mat-option *ngFor="let chName of ChannelNameArr" [value]="chName.ChannelName">
+                        {{chName.ChannelName}}
+                      </mat-option>
+                    </mat-select> -->
+                    <input type="text" matInput placeholder="Channel Name" formControlName="DeliveryChannelName"
+                    [errorStateMatcher]="matcher" required>
+                    <mat-error>
+                        <span *ngIf="!frmEditDeliveryChannel.get('DeliveryChannelName').valid && frmEditDeliveryChannel.get('DeliveryChannelName').touched">Please select user access</span>
+                      </mat-error>
+                    <!-- <mat-icon class="text-ping" matSuffix>how_to_reg</mat-icon> -->
+                    <!-- [selected]="car.color.id == qlikSenseApps.Appid" -->
+                  </mat-form-field>
+                  </div>
+                  </div>
+                  <!-- <div class="col-md-1"></div> -->
+                  <!-- <div class=" col-md-3">
+                      Channel Type:
+                    </div> -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Channel Type</mat-label>
+                        <mat-select placeholder="Channel Type" formControlName="DeliveryChannelType" name="DeliveryChannelType" (selectionChange)="ChannelTypeChanged($event.value)" required >
+                            <mat-option>-- Select Channel TYpe --</mat-option>
+                          <mat-option *ngFor="let CType of ChannelType" [value]="CType.CahnnelTypeName">
+                            {{CType.CahnnelTypeName}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <span *ngIf="!frmEditDeliveryChannel.get('DeliveryChannelType').valid && frmEditDeliveryChannel.get('DeliveryChannelType').touched">Please select user role</span>
+                          </mat-error>
+                        <!-- <mat-icon class="text-ping" matSuffix>beenhere</mat-icon> -->
+                        <!-- [selected]="car.color.id == qlikSenseApps.Appid" -->
+                      </mat-form-field>
+                      </div>
+                      </div>
+                  </div>
+          </mat-card>
+        <ng-container *ngIf="ShowEmail">
+            <mat-panel-title>
+                Email Connection Details:
+            </mat-panel-title>
+     <mat-card>
+     <div class="container">
+             <div class="from-group">
+                 <div class="row">
+                    
+                     <div class="col-md-5">
+                       <!-- <input type="text" class="form-control"> -->
+                       <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Address *</mat-label>
+                         <!-- <span matPrefix><mat-icon matPrefix>edit</mat-icon> &nbsp;</span> -->
+                         <input matInput placeholder="Enter Delivery Channel Name" formControlName="Address"
+                                [errorStateMatcher]="matcher">
+                         <mat-error>
+                           <span *ngIf="!frmEditDeliveryChannel.get('Address').valid && frmEditDeliveryChannel.get('Address').touched">Please enter User Name</span>
+                         </mat-error>
+                         <!-- <mat-icon class="text-ping" matSuffix>supervised_user_circle</mat-icon> -->
+                       </mat-form-field>
+                     </div>
+                     <!-- <div class="col-md-1"></div> -->
+                     
+                     <div class="col-md-4">
+                       <mat-form-field class="example-full-width" appearance="fill" >
+                         <mat-label>PortNo *</mat-label>
+                         <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+                         <input  matInput placeholder="Select Cahnnel" formControlName="PortNo"
+                                [errorStateMatcher]="matcher">
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+
+                                <!-- <mat-icon class="text-ping" matSuffix>perm_identity</mat-icon> -->
+
+                         <mat-error>
+                           <span *ngIf="!frmEditDeliveryChannel.get('PortNo').valid && frmEditDeliveryChannel.get('PortNo').touched">Please enter User ID</span>
+                         </mat-error>
+                       </mat-form-field>
+                     </div>
+                     
+                 </div>
+             <br>
+             <div class="row">
+                 
+                 <div class="col-md-5">
+                     <mat-radio-group formControlName="SecurityLayerID">
+                         <mat-radio-button class="example-margin" color ="warn" value="TLS Security" (click)="show = 'false' ">Use TLS(Transport Layer Security)</mat-radio-button>
+                         <mat-radio-button class="example-margin" color ="warn" value="SSL Security" (click)="show = 'true' ">Use SSL(Secure Socet Layer)</mat-radio-button>
+                     </mat-radio-group>
+                 </div>
+             </div>
+             <br>
+             <div class="row">
+                
+                 <div class="col-md-5">
+                   <mat-form-field class="example-full-width" appearance="fill">
+                     <mat-label>User Email *</mat-label>
+                     <!-- <span matPrefix>+1 &nbsp;</span> -->
+                     <input matInput placeholder="Enter User Email" formControlName="EmailUserName"
+                            [errorStateMatcher]="matcher">
+                     <mat-error>
+                       <span *ngIf="!frmEditDeliveryChannel.get('EmailUserName').valid && frmEditDeliveryChannel.get('EmailUserName').touched">Please enter User Directory</span>
+                     </mat-error>
+                     <!-- <mat-icon class="text-ping" matSuffix>folder_shared</mat-icon> -->
+                   </mat-form-field>
+                 </div>
+               <div class="col-md-6">
+                   <div class="row">
+                       
+                       <div class="col-md-5">
+                         <mat-form-field class="example-full-width" appearance="fill" >
+                           <mat-label>Password *</mat-label>
+                           <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+                           <input type="password" matInput placeholder="Enter Password" formControlName="Password"
+                                  [errorStateMatcher]="matcher">
+                                  <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+ 
+                                  <!-- <mat-icon class="text-ping" matSuffix>perm_identity</mat-icon> -->
+ 
+                           <mat-error>
+                             <span *ngIf="!frmEditDeliveryChannel.get('Password').valid && frmEditDeliveryChannel.get('Password').touched">Please enter password</span>
+                           </mat-error>
+                         </mat-form-field>
+                       </div>
+                     <div class="col-md-2">
+                         <button class="btn btn-primary">Test Connection</button>
+                     </div>
+                   </div>
+               </div>
+             </div><br>
+             <div class="row">
+                
+                 <div class="col-md-5">
+                   <mat-form-field class="example-full-width" appearance="fill" >
+                     <mat-label>Default Sender Email ID *</mat-label>
+                     <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+                     <input matInput placeholder="Enter Default Sennder Email Id" formControlName="DefaultSenderEmail"
+                            [errorStateMatcher]="matcher">
+                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+
+                            <!-- <mat-icon class="text-ping" matSuffix>perm_identity</mat-icon> -->
+
+                     <mat-error>
+                       <span *ngIf="!frmEditDeliveryChannel.get('DefaultSenderEmail').valid && frmEditDeliveryChannel.get('DefaultSenderEmail').touched">Please enter User ID</span>
+                     </mat-error>
+                   </mat-form-field>
+                 </div>
+               </div>
+              
+           </div>
+           <br><br><br>
+         <!-- <div class="row">
+           <div class="col-md-5"></div>
+           <div>
+             <button class=" col-md-2" class="btn btn-danger" (click)="onAddValues(email, app)" type="submit">Save</button>
+             &nbsp;&nbsp;&nbsp;&nbsp;
+             <button class=" col-md-2" class="btn btn-default" >Cancel</button>
+           </div>
+
+
+         </div> -->
+     </div>
+
+     </mat-card>
+        </ng-container>        
+         
+
+<!-- Mobile Channel Details -->
+<!-- *********************************************** -->
+<ng-container *ngIf="ShowMobileApp">
+  <mat-panel-title>
+    Mobile App Connection Details:
+  </mat-panel-title>
+  <mat-card>
+  <div class="container">
+  <div class="from-group">
+    <div class="row">
+        
+        <div class="col-md-5">
+          <!-- <input type="text" class="form-control"> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Device Name *</mat-label>
+          <mat-select placeholder="Device Name" formControlName="DeviceName" name="DeviceName" required>
+              <mat-option>--  Select Device Name --</mat-option>
+            <mat-option *ngFor="let chName of MobileChannels" [value]="chName.name">
+              {{chName.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+              <span *ngIf="!frmEditDeliveryChannel.get('DeviceName').valid && frmEditDeliveryChannel.get('DeviceName').touched">Please Select Device Name</span>
+            </mat-error>
+          <!-- <mat-icon class="text-ping" matSuffix>how_to_reg</mat-icon> -->
+          <!-- [selected]="car.color.id == qlikSenseApps.Appid" -->
+        </mat-form-field>
+        </div>
+        <!-- <div class="col-md-1"></div> -->      
+        
+    </div>
+  <br>
+
+  <!-- API KEY Contol -->
+  <div class="row">
+    
+    <div class="col-md-5">
+      <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label>API Key *</mat-label>
+        <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+        <input matInput placeholder="Enter API Key" formControlName="APIKey"
+                [errorStateMatcher]="matcher">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+
+                <!-- <mat-icon class="text-ping" matSuffix>perm_identity</mat-icon> -->
+
+        <mat-error>
+          <span *ngIf="!frmEditDeliveryChannel.get('APIKey').valid && frmEditDeliveryChannel.get('APIKey').touched">Please Enter API Key</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Sender Key Controls -->
+  <div class="row">
+    
+    <div class="col-md-5">
+      <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label>Sender Key *</mat-label>
+        <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+        <input matInput placeholder="Enter Sender Key" formControlName="SenderKey"
+              [errorStateMatcher]="matcher">
+              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+
+              <!-- <mat-icon class="text-ping" matSuffix>perm_identity</mat-icon> -->
+
+        <mat-error>
+          <span *ngIf="!frmEditDeliveryChannel.get('SenderKey').valid && frmEditDeliveryChannel.get('SenderKey').touched">Please Enter Sender Key</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Server controls -->
+  <div class="row">
+    
+    <div class="col-md-5">
+      <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label>Server *</mat-label>
+        <!-- <span matPrefix><mat-icon matPrefix>edit_attributes</mat-icon>&nbsp;</span> -->
+        <input matInput placeholder="Enter Server" formControlName="Server"
+              [errorStateMatcher]="matcher">
+              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+
+              <!-- <mat-icon class="text-ping" matSuffix>perm_identity</mat-icon> -->
+
+        <mat-error>
+          <span *ngIf="!frmEditDeliveryChannel.get('Server').valid && frmEditDeliveryChannel.get('Server').touched">Please Enter Server Details</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  </div>
+  <br><br><br>
+  <!-- <div class="row">
+  <div class="col-md-5"></div>
+  <div>
+  <button class=" col-md-2" class="btn btn-danger" (click)="onAddValues(email, app)" type="submit">Save</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button class=" col-md-2" class="btn btn-default" >Cancel</button>
+  </div>
+
+
+  </div> -->
+  </div>
+
+  </mat-card>
+</ng-container>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div>
+  <button class="col-md-2" [disabled]="!frmEditDeliveryChannel.valid"  class="btn btn-danger"  type="submit">Update</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button class=" col-md-2" [routerLink]="['/admin/deliveryChannelDetails']" class="btn btn-default" >Cancel</button>
+  </div>
+
+
+  </div>
+      </div>
+    </form>
+    <!-- <p>Form value: {{ frmEditDeliveryChannel.value | json }}</p> -->
+</div>

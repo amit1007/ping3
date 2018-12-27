@@ -1,0 +1,75 @@
+/* Structure */
+
+input[type="file"] {
+    display: none;
+  }
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  table {
+      width: 100%;
+      transition: none !important;
+      box-shadow: none !important;
+      margin-top: -30px;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      width: 70%;
+    }
+    
+    #table-responsive{
+      margin-top: 5px;
+    }
+    
+    #row2{
+      margin-top: -2px;
+      padding-top: 8px;
+      padding-bottom: 10px;
+    }
+    
+    .table-responsive{
+      margin-top: -15px;
+      padding-top: 40px;
+    }
+    tr.mat-header-row{
+      height: 37px;
+    }
+    .table-bordered>thead>tr>th{
+      border: 1px solid rgb(231, 76, 60);
+    }
+    /* Switch Button */
+    th{
+      padding-top: -100px;
+    }
+    #th_allign{
+      text-align: center;
+    }
+    td{
+      color: rgb(127, 127, 127)
+    }
+    
+    .mat-header-cell {
+      color: rgb(102,102,102);
+    }
+    
+    th{
+      font-size: 14px;
+      background-color: rgb(238, 238, 238);
+      /* background-color: rgb(249, 55, 66); */
+    
+    }
+    
+    #btn-danger{
+      background-color: rgb(249, 25, 66);
+      color: rgb(255, 255, 255)
+    }
+    
+    
+  * {
+    font-family: 'Nunito', 'Glyphicons Halflings';
+  }

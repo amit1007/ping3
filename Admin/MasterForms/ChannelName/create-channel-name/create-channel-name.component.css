@@ -1,0 +1,51 @@
+#edit{
+    background-color:rgb(231, 76, 60);
+    padding-top: 14px;
+  }
+  
+  .btn-primary{
+    margin-left: 40%;
+  }
+  
+  #container1{
+    border: 1px solid rgb(236, 235, 235);
+    margin-left:13%
+  }
+  
+  /* #margin{
+    margin-left: 10% ;
+  } */
+  
+  .btn-primary {
+  background-color:rgb(231, 76, 60);
+  border: rgb(231, 76, 60);
+  }
+
+  #btn{
+    background-color: rgb(249, 25, 66);
+    color: rgb(255, 255, 255)
+  }
+  .example-form {
+    min-width: 80px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .example-full-width:nth-last-child() {
+    margin-bottom: 10px;
+  }
+  
+  .button-row {
+    margin: 10px 0;
+  }
+  .text-ping{
+    color: red
+  }
+  .text-white{
+    color: white;
+  }
+  

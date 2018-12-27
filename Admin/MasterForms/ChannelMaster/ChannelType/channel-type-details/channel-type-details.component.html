@@ -1,0 +1,112 @@
+<br><br><br><br>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+            <div class="btn-group btn-breadcrumb ">
+                <a routerLink="/pingAlert/alertInbox" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+                <a routerLink="/UserRoleCreate" class="btn btn-default">Users</a>
+                <a routerLink="/UserRoleDetails" class="btn btn-default">Channel Type Details</a>
+
+        </div>
+      </div>
+      <div class="col-md-4 pull-right">
+        <div class="input-group" style="float:right">
+          <!-- <input type="text" class="form-control" placeholder="Search" id="txtSearch"/> -->
+          <input class="form-control" (keyup)="applyFilter($event.target.value)" placeholder="Search" >
+              <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>
+              </div>
+          </div>
+       </div>
+
+
+    </div>
+</div>
+
+<!--
+<div class="row">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-4">
+
+  </div>
+</div> -->
+<br>
+
+
+    <div class="container" id="table-responsive">
+          <div class="table-responsive" >
+              <table mat-table [dataSource]="dataSource" matSort class=" mat-elevation-z8 table-bordered table-striped">
+
+                <!-- Channel Type Id Column -->
+                <ng-container matColumnDef="ChannelTypeID">
+                <th class="text-center" id="th_allign" mat-header-cell *matHeaderCellDef >Channel Type ID</th>
+                <td mat-cell *matCellDef="let element"> {{element.ChannelTypeID}} </td>
+                </ng-container>
+
+                <!-- Channel Type name Column -->
+                <ng-container matColumnDef="ChannelTypeName">
+                  <th mat-header-cell id="th_allign" class="text-center" *matHeaderCellDef> Channel Type Name </th>
+                  <td mat-cell  *matCellDef="let element">  &nbsp; {{element.ChannelTypeName}} </td>
+                  </ng-container>
+
+                <!-- Insert By Column -->
+                <ng-container matColumnDef="InsertBy">
+                <th mat-header-cell id="th_allign" class="text-center" *matHeaderCellDef> Insert By </th>
+                <td mat-cell  *matCellDef="let element">  &nbsp; {{element.InsertBy}} </td>
+                </ng-container>
+
+                <!-- Is aCtive Column -->
+                <ng-container matColumnDef="IsActive">
+                  <th mat-header-cell id="th_allign" class="text-center"  *matHeaderCellDef>Is Active </th>
+                  <td mat-cell  *matCellDef="let element">  &nbsp; {{element.IsActive}} </td>
+                  </ng-container> 
+                
+                <!-- Colum Edit/ Delete -->
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell id="th_allign" class="text-center" *matHeaderCellDef>Edit / Delete  </th>
+
+                   <td mat-cell *matCellDef="let element">
+                     <div class="row col-md-offset-3">
+                       <div class="col-md-2">
+                          <!-- <a routerLink="/edit_alert" style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a> -->
+                          <!-- <a type='submit' [routerLink]="['/edit_new',element.id]" (click)="onEdit(element._id)" style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a> -->
+                          <a type='submit' [routerLink]="['/UserRoleEdit/',element._id]"  style="cursor: pointer;"><i class="glyphicon glyphicon-pencil" ></i></a>
+
+                        </div>
+                       &nbsp;
+                       <div class="col-md-2">
+                            <a style="cursor: pointer;" (click)="deleteUser(element._id)"><i class="glyphicon glyphicon-trash"></i></a>
+                           <!-- <a mat-raised-button color="warn" (click)="deleteAlert(element._id)"><mat-icon>delete</mat-icon></a> -->
+                        </div>
+                     </div>
+                   </td>
+                 </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+
+          </div>
+
+
+        <br>
+        <div class="row">
+          <div class="col-md-3">
+              <button mat-raised-button id="btn" [routerLink]="['/admin/createChannelType']">Create Channel Type</button>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-5">
+            <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+        </div>
+        </div>
+      </div>
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+<br><br><br><br>
+
+<br><br><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+          <div class="btn-group btn-breadcrumb ">
+              <a routerLink="/pingAlert/alertInbox" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+              <a class="btn btn-default">Admin</a>
+              <a routerLink="/UserRoleDetails" class="btn btn-default">User Preferences</a>
+              <a class="btn btn-default active">Add User Preference</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row"> 
+    <br>
+    <form [formGroup]="ChannelType" (ngSubmit)="onFormSubmit(ChannelType.value)">
+      <div class="col-lg-9 col-lg-offset-1">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-lg-3">Channel Type</div>
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-4"><button mat-stroked-button class="text-ping pull-right" [routerLink]="['/UserRoleDetails']" ><mat-icon class="text-ping" matSuffix>format_list_numbered</mat-icon>View User</button></div>
+                </div>
+               
+                  
+              </div>
+              <div class="panel-body">                
+              <div class="col-lg-6">
+                  <div class="row">
+                      <div class="col-lg-9">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Channel Type ID *</mat-label>
+                          <!-- <span matPrefix><mat-icon matPrefix>edit</mat-icon> &nbsp;</span> -->
+                          <input matInput placeholder="Enter Channel Type" formControlName="ChannelTypeID"
+                                 [errorStateMatcher]="matcher">
+                          <mat-error>
+                            <span *ngIf="!ChannelType.get('ChannelTypeID').valid && ChannelType.get('ChannelTypeID').touched">Please enter Cahnnel Type ID</span>
+                          </mat-error>
+                          <mat-icon class="text-ping" matSuffix>supervised_user_circle</mat-icon>
+                        </mat-form-field>
+                
+                        </div>
+                  </div>
+                  
+                <div class="row">
+                    <div class="col-lg-9">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Channel Name *</mat-label>
+                        <!-- <span matPrefix><mat-icon matPrefix>edit</mat-icon> &nbsp;</span> -->
+                        <input matInput placeholder="Enter Channel Type" formControlName="ChannelTypeName"
+                               [errorStateMatcher]="matcher">
+                        <mat-error>
+                          <span *ngIf="!ChannelType.get('ChannelTypeName').valid && ChannelType.get('ChannelTypeName').touched">Please enter Channel Type</span>
+                        </mat-error>
+                        <mat-icon class="text-ping" matSuffix>supervised_user_circle</mat-icon>
+                      </mat-form-field>
+              
+                      </div>
+                </div>
+               
+                
+                 
+                  <!-- <div class="row"> 
+                    <div class="col-lg-4">
+                      <button mat-stroked-button class="text-ping" [routerLink]="['/UserRoleDetails']" ><mat-icon class="text-ping" matSuffix>format_list_numbered</mat-icon>View User</button>                    </div>
+                    <div class="col-lg-4">
+                      <button mat-stroked-button class="text-ping"><mat-icon class="text-ping" matSuffix>group</mat-icon>Group Details</button>
+                    </div>
+                  
+                  </div> -->
+                  <div class="row">
+                    <div class="col-lg-9">
+                          
+                      <button type="submit" [disabled]="!ChannelType.valid" mat-raised-button class="text-ping"><mat-icon>save</mat-icon></button>
+                  
+              </div>
+                    <!-- <div class="col-lg-offset-3">
+                        <button mat-fab class="text-ping">{{usercount}}</button>
+                    </div> -->
+                    
+                  </div>
+                  
+                    
+              </div></div>
+            </div>
+      </div>
+      
+        
+    </form>
+
+</div>
+
